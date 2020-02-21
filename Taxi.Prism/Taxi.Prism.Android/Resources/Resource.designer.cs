@@ -26,6 +26,137 @@ namespace Taxi.Prism.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Plugin.Geolocator.Resource.Attribute.alpha = global::Taxi.Prism.Droid.Resource.Attribute.alpha;
+			global::Plugin.Geolocator.Resource.Attribute.font = global::Taxi.Prism.Droid.Resource.Attribute.font;
+			global::Plugin.Geolocator.Resource.Attribute.fontProviderAuthority = global::Taxi.Prism.Droid.Resource.Attribute.fontProviderAuthority;
+			global::Plugin.Geolocator.Resource.Attribute.fontProviderCerts = global::Taxi.Prism.Droid.Resource.Attribute.fontProviderCerts;
+			global::Plugin.Geolocator.Resource.Attribute.fontProviderFetchStrategy = global::Taxi.Prism.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::Plugin.Geolocator.Resource.Attribute.fontProviderFetchTimeout = global::Taxi.Prism.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::Plugin.Geolocator.Resource.Attribute.fontProviderPackage = global::Taxi.Prism.Droid.Resource.Attribute.fontProviderPackage;
+			global::Plugin.Geolocator.Resource.Attribute.fontProviderQuery = global::Taxi.Prism.Droid.Resource.Attribute.fontProviderQuery;
+			global::Plugin.Geolocator.Resource.Attribute.fontStyle = global::Taxi.Prism.Droid.Resource.Attribute.fontStyle;
+			global::Plugin.Geolocator.Resource.Attribute.fontVariationSettings = global::Taxi.Prism.Droid.Resource.Attribute.fontVariationSettings;
+			global::Plugin.Geolocator.Resource.Attribute.fontWeight = global::Taxi.Prism.Droid.Resource.Attribute.fontWeight;
+			global::Plugin.Geolocator.Resource.Attribute.ttcIndex = global::Taxi.Prism.Droid.Resource.Attribute.ttcIndex;
+			global::Plugin.Geolocator.Resource.Color.notification_action_color_filter = global::Taxi.Prism.Droid.Resource.Color.notification_action_color_filter;
+			global::Plugin.Geolocator.Resource.Color.notification_icon_bg_color = global::Taxi.Prism.Droid.Resource.Color.notification_icon_bg_color;
+			global::Plugin.Geolocator.Resource.Color.ripple_material_light = global::Taxi.Prism.Droid.Resource.Color.ripple_material_light;
+			global::Plugin.Geolocator.Resource.Color.secondary_text_default_material_light = global::Taxi.Prism.Droid.Resource.Color.secondary_text_default_material_light;
+			global::Plugin.Geolocator.Resource.Dimension.compat_button_inset_horizontal_material = global::Taxi.Prism.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::Plugin.Geolocator.Resource.Dimension.compat_button_inset_vertical_material = global::Taxi.Prism.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::Plugin.Geolocator.Resource.Dimension.compat_button_padding_horizontal_material = global::Taxi.Prism.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::Plugin.Geolocator.Resource.Dimension.compat_button_padding_vertical_material = global::Taxi.Prism.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::Plugin.Geolocator.Resource.Dimension.compat_control_corner_material = global::Taxi.Prism.Droid.Resource.Dimension.compat_control_corner_material;
+			global::Plugin.Geolocator.Resource.Dimension.compat_notification_large_icon_max_height = global::Taxi.Prism.Droid.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::Plugin.Geolocator.Resource.Dimension.compat_notification_large_icon_max_width = global::Taxi.Prism.Droid.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::Plugin.Geolocator.Resource.Dimension.notification_action_icon_size = global::Taxi.Prism.Droid.Resource.Dimension.notification_action_icon_size;
+			global::Plugin.Geolocator.Resource.Dimension.notification_action_text_size = global::Taxi.Prism.Droid.Resource.Dimension.notification_action_text_size;
+			global::Plugin.Geolocator.Resource.Dimension.notification_big_circle_margin = global::Taxi.Prism.Droid.Resource.Dimension.notification_big_circle_margin;
+			global::Plugin.Geolocator.Resource.Dimension.notification_content_margin_start = global::Taxi.Prism.Droid.Resource.Dimension.notification_content_margin_start;
+			global::Plugin.Geolocator.Resource.Dimension.notification_large_icon_height = global::Taxi.Prism.Droid.Resource.Dimension.notification_large_icon_height;
+			global::Plugin.Geolocator.Resource.Dimension.notification_large_icon_width = global::Taxi.Prism.Droid.Resource.Dimension.notification_large_icon_width;
+			global::Plugin.Geolocator.Resource.Dimension.notification_main_column_padding_top = global::Taxi.Prism.Droid.Resource.Dimension.notification_main_column_padding_top;
+			global::Plugin.Geolocator.Resource.Dimension.notification_media_narrow_margin = global::Taxi.Prism.Droid.Resource.Dimension.notification_media_narrow_margin;
+			global::Plugin.Geolocator.Resource.Dimension.notification_right_icon_size = global::Taxi.Prism.Droid.Resource.Dimension.notification_right_icon_size;
+			global::Plugin.Geolocator.Resource.Dimension.notification_right_side_padding_top = global::Taxi.Prism.Droid.Resource.Dimension.notification_right_side_padding_top;
+			global::Plugin.Geolocator.Resource.Dimension.notification_small_icon_background_padding = global::Taxi.Prism.Droid.Resource.Dimension.notification_small_icon_background_padding;
+			global::Plugin.Geolocator.Resource.Dimension.notification_small_icon_size_as_large = global::Taxi.Prism.Droid.Resource.Dimension.notification_small_icon_size_as_large;
+			global::Plugin.Geolocator.Resource.Dimension.notification_subtext_size = global::Taxi.Prism.Droid.Resource.Dimension.notification_subtext_size;
+			global::Plugin.Geolocator.Resource.Dimension.notification_top_pad = global::Taxi.Prism.Droid.Resource.Dimension.notification_top_pad;
+			global::Plugin.Geolocator.Resource.Dimension.notification_top_pad_large_text = global::Taxi.Prism.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::Plugin.Geolocator.Resource.Drawable.notification_action_background = global::Taxi.Prism.Droid.Resource.Drawable.notification_action_background;
+			global::Plugin.Geolocator.Resource.Drawable.notification_bg = global::Taxi.Prism.Droid.Resource.Drawable.notification_bg;
+			global::Plugin.Geolocator.Resource.Drawable.notification_bg_low = global::Taxi.Prism.Droid.Resource.Drawable.notification_bg_low;
+			global::Plugin.Geolocator.Resource.Drawable.notification_bg_low_normal = global::Taxi.Prism.Droid.Resource.Drawable.notification_bg_low_normal;
+			global::Plugin.Geolocator.Resource.Drawable.notification_bg_low_pressed = global::Taxi.Prism.Droid.Resource.Drawable.notification_bg_low_pressed;
+			global::Plugin.Geolocator.Resource.Drawable.notification_bg_normal = global::Taxi.Prism.Droid.Resource.Drawable.notification_bg_normal;
+			global::Plugin.Geolocator.Resource.Drawable.notification_bg_normal_pressed = global::Taxi.Prism.Droid.Resource.Drawable.notification_bg_normal_pressed;
+			global::Plugin.Geolocator.Resource.Drawable.notification_icon_background = global::Taxi.Prism.Droid.Resource.Drawable.notification_icon_background;
+			global::Plugin.Geolocator.Resource.Drawable.notification_template_icon_bg = global::Taxi.Prism.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::Plugin.Geolocator.Resource.Drawable.notification_template_icon_low_bg = global::Taxi.Prism.Droid.Resource.Drawable.notification_template_icon_low_bg;
+			global::Plugin.Geolocator.Resource.Drawable.notification_tile_bg = global::Taxi.Prism.Droid.Resource.Drawable.notification_tile_bg;
+			global::Plugin.Geolocator.Resource.Drawable.notify_panel_notification_icon_bg = global::Taxi.Prism.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::Plugin.Geolocator.Resource.Id.actions = global::Taxi.Prism.Droid.Resource.Id.actions;
+			global::Plugin.Geolocator.Resource.Id.action_container = global::Taxi.Prism.Droid.Resource.Id.action_container;
+			global::Plugin.Geolocator.Resource.Id.action_divider = global::Taxi.Prism.Droid.Resource.Id.action_divider;
+			global::Plugin.Geolocator.Resource.Id.action_image = global::Taxi.Prism.Droid.Resource.Id.action_image;
+			global::Plugin.Geolocator.Resource.Id.action_text = global::Taxi.Prism.Droid.Resource.Id.action_text;
+			global::Plugin.Geolocator.Resource.Id.async = global::Taxi.Prism.Droid.Resource.Id.async;
+			global::Plugin.Geolocator.Resource.Id.blocking = global::Taxi.Prism.Droid.Resource.Id.blocking;
+			global::Plugin.Geolocator.Resource.Id.chronometer = global::Taxi.Prism.Droid.Resource.Id.chronometer;
+			global::Plugin.Geolocator.Resource.Id.forever = global::Taxi.Prism.Droid.Resource.Id.forever;
+			global::Plugin.Geolocator.Resource.Id.icon = global::Taxi.Prism.Droid.Resource.Id.icon;
+			global::Plugin.Geolocator.Resource.Id.icon_group = global::Taxi.Prism.Droid.Resource.Id.icon_group;
+			global::Plugin.Geolocator.Resource.Id.info = global::Taxi.Prism.Droid.Resource.Id.info;
+			global::Plugin.Geolocator.Resource.Id.italic = global::Taxi.Prism.Droid.Resource.Id.italic;
+			global::Plugin.Geolocator.Resource.Id.line1 = global::Taxi.Prism.Droid.Resource.Id.line1;
+			global::Plugin.Geolocator.Resource.Id.line3 = global::Taxi.Prism.Droid.Resource.Id.line3;
+			global::Plugin.Geolocator.Resource.Id.normal = global::Taxi.Prism.Droid.Resource.Id.normal;
+			global::Plugin.Geolocator.Resource.Id.notification_background = global::Taxi.Prism.Droid.Resource.Id.notification_background;
+			global::Plugin.Geolocator.Resource.Id.notification_main_column = global::Taxi.Prism.Droid.Resource.Id.notification_main_column;
+			global::Plugin.Geolocator.Resource.Id.notification_main_column_container = global::Taxi.Prism.Droid.Resource.Id.notification_main_column_container;
+			global::Plugin.Geolocator.Resource.Id.right_icon = global::Taxi.Prism.Droid.Resource.Id.right_icon;
+			global::Plugin.Geolocator.Resource.Id.right_side = global::Taxi.Prism.Droid.Resource.Id.right_side;
+			global::Plugin.Geolocator.Resource.Id.tag_transition_group = global::Taxi.Prism.Droid.Resource.Id.tag_transition_group;
+			global::Plugin.Geolocator.Resource.Id.tag_unhandled_key_event_manager = global::Taxi.Prism.Droid.Resource.Id.tag_unhandled_key_event_manager;
+			global::Plugin.Geolocator.Resource.Id.tag_unhandled_key_listeners = global::Taxi.Prism.Droid.Resource.Id.tag_unhandled_key_listeners;
+			global::Plugin.Geolocator.Resource.Id.text = global::Taxi.Prism.Droid.Resource.Id.text;
+			global::Plugin.Geolocator.Resource.Id.text2 = global::Taxi.Prism.Droid.Resource.Id.text2;
+			global::Plugin.Geolocator.Resource.Id.time = global::Taxi.Prism.Droid.Resource.Id.time;
+			global::Plugin.Geolocator.Resource.Id.title = global::Taxi.Prism.Droid.Resource.Id.title;
+			global::Plugin.Geolocator.Resource.Integer.status_bar_notification_info_maxnum = global::Taxi.Prism.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Plugin.Geolocator.Resource.Layout.notification_action = global::Taxi.Prism.Droid.Resource.Layout.notification_action;
+			global::Plugin.Geolocator.Resource.Layout.notification_action_tombstone = global::Taxi.Prism.Droid.Resource.Layout.notification_action_tombstone;
+			global::Plugin.Geolocator.Resource.Layout.notification_template_custom_big = global::Taxi.Prism.Droid.Resource.Layout.notification_template_custom_big;
+			global::Plugin.Geolocator.Resource.Layout.notification_template_icon_group = global::Taxi.Prism.Droid.Resource.Layout.notification_template_icon_group;
+			global::Plugin.Geolocator.Resource.Layout.notification_template_part_chronometer = global::Taxi.Prism.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::Plugin.Geolocator.Resource.Layout.notification_template_part_time = global::Taxi.Prism.Droid.Resource.Layout.notification_template_part_time;
+			global::Plugin.Geolocator.Resource.String.status_bar_notification_info_overflow = global::Taxi.Prism.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::Plugin.Geolocator.Resource.Style.TextAppearance_Compat_Notification = global::Taxi.Prism.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::Plugin.Geolocator.Resource.Style.TextAppearance_Compat_Notification_Info = global::Taxi.Prism.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::Plugin.Geolocator.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::Taxi.Prism.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::Plugin.Geolocator.Resource.Style.TextAppearance_Compat_Notification_Time = global::Taxi.Prism.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::Plugin.Geolocator.Resource.Style.TextAppearance_Compat_Notification_Title = global::Taxi.Prism.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::Plugin.Geolocator.Resource.Style.Widget_Compat_NotificationActionContainer = global::Taxi.Prism.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::Plugin.Geolocator.Resource.Style.Widget_Compat_NotificationActionText = global::Taxi.Prism.Droid.Resource.Style.Widget_Compat_NotificationActionText;
+			global::Plugin.Geolocator.Resource.Styleable.ColorStateListItem = global::Taxi.Prism.Droid.Resource.Styleable.ColorStateListItem;
+			global::Plugin.Geolocator.Resource.Styleable.ColorStateListItem_alpha = global::Taxi.Prism.Droid.Resource.Styleable.ColorStateListItem_alpha;
+			global::Plugin.Geolocator.Resource.Styleable.ColorStateListItem_android_alpha = global::Taxi.Prism.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::Plugin.Geolocator.Resource.Styleable.ColorStateListItem_android_color = global::Taxi.Prism.Droid.Resource.Styleable.ColorStateListItem_android_color;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamily = global::Taxi.Prism.Droid.Resource.Styleable.FontFamily;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_android_font = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_android_fontStyle = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_android_fontWeight = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_font = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_fontStyle = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_fontWeight = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamilyFont_ttcIndex = global::Taxi.Prism.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamily_fontProviderAuthority = global::Taxi.Prism.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamily_fontProviderCerts = global::Taxi.Prism.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::Taxi.Prism.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::Taxi.Prism.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamily_fontProviderPackage = global::Taxi.Prism.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Plugin.Geolocator.Resource.Styleable.FontFamily_fontProviderQuery = global::Taxi.Prism.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColorItem = global::Taxi.Prism.Droid.Resource.Styleable.GradientColorItem;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColorItem_android_color = global::Taxi.Prism.Droid.Resource.Styleable.GradientColorItem_android_color;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColorItem_android_offset = global::Taxi.Prism.Droid.Resource.Styleable.GradientColorItem_android_offset;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_centerColor = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_centerColor;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_centerX = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_centerX;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_centerY = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_centerY;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_endColor = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_endColor;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_endX = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_endX;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_endY = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_endY;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_gradientRadius = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_startColor = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_startColor;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_startX = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_startX;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_startY = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_startY;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_tileMode = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_tileMode;
+			global::Plugin.Geolocator.Resource.Styleable.GradientColor_android_type = global::Taxi.Prism.Droid.Resource.Styleable.GradientColor_android_type;
 			global::Prism.Resource.Animation.abc_fade_in = global::Taxi.Prism.Droid.Resource.Animation.abc_fade_in;
 			global::Prism.Resource.Animation.abc_fade_out = global::Taxi.Prism.Droid.Resource.Animation.abc_fade_out;
 			global::Prism.Resource.Animation.abc_grow_fade_in_from_bottom = global::Taxi.Prism.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -12461,25 +12592,7 @@ namespace Taxi.Prism.Droid
 		{
 			
 			// aapt resource value: 0x7F0C0000
-			public const int ic_action_account_circle = 2131492864;
-			
-			// aapt resource value: 0x7F0C0001
-			public const int ic_action_airport_shuttle = 2131492865;
-			
-			// aapt resource value: 0x7F0C0002
-			public const int ic_action_exit_to_app = 2131492866;
-			
-			// aapt resource value: 0x7F0C0003
-			public const int ic_action_local_taxi = 2131492867;
-			
-			// aapt resource value: 0x7F0C0004
-			public const int ic_action_people = 2131492868;
-			
-			// aapt resource value: 0x7F0C0005
-			public const int ic_action_report = 2131492869;
-			
-			// aapt resource value: 0x7F0C0006
-			public const int ic_launcher = 2131492870;
+			public const int ic_launcher = 2131492864;
 			
 			static Mipmap()
 			{

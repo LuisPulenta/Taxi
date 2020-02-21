@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Taxi.Prism.Droid</RootNamespace>
-    <AssemblyName>Taxi.Prism.Android</AssemblyName>
+    <AssemblyName>Taxi.PRism.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
@@ -55,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Xam.Plugin.Geolocator">
+      <Version>4.6.2-beta</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.282-pre4" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />

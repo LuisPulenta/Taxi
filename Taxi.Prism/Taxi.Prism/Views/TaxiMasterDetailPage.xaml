@@ -26,9 +26,9 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                   </Grid.ColumnDefinitions>
                   <Image Grid.Column="0"
-                                    	   HeightRequest="50"
+                                    	   HeightRequest="40"
                                     	   Source="{Binding Icon}"
-                                    	   WidthRequest="50"/>
+                                    	   WidthRequest="40"/>
                   <Label Grid.Column="1"
                                         FontAttributes="Bold"
                                    	    VerticalOptions="Center"

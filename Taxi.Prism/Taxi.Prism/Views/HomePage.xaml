@@ -10,12 +10,12 @@
     <maps:Map x:Name="MyMap"
                   MapType="Street"/>
     <StackLayout Padding="5">
-      <Button BackgroundColor="Green"
+      <Button BackgroundColor="Black"
                     CornerRadius="20"
                     HeightRequest="40"
                     Margin="10,0"
                     Text="Iniciar Viaje"
-                    TextColor="White"/>
+                    TextColor="Yellow"/>
     </StackLayout>
   </StackLayout>
 

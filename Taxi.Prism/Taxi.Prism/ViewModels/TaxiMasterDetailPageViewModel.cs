@@ -24,37 +24,37 @@ namespace Taxi.Prism.ViewModels
             {
                 new Menu
                 {
-                    Icon = "ic_airport_shuttle",
+                    Icon = "ic_action_airport_shuttle",
                     PageName = "HomePage",
                     Title = "New trip"
                 },
                 new Menu
                 {
-                    Icon = "ic_local_taxi",
+                    Icon = "ic_action_local_taxi",
                     PageName = "TaxiHistoryPage",
                     Title = "See taxi history"
                 },
                 new Menu
                 {
-                    Icon = "ic_people",
+                    Icon = "ic_action_people",
                     PageName = "GroupPage",
                     Title = "Admin my user group"
                 },
                 new Menu
                 {
-                    Icon = "ic_account_circle",
+                    Icon = "ic_action_account_circle",
                     PageName = "ModifyUserPage",
                     Title = "Modify User"
                 },
                 new Menu
                 {
-                    Icon = "ic_report",
+                    Icon = "ic_action_report",
                     PageName = "ReportPage",
                     Title = "Report an incident"
                 },
                 new Menu
                 {
-                    Icon = "ic_exit_to_app",
+                    Icon = "ic_action_exit_to_app",
                     PageName = "LoginPage",
                     Title = "Log in"
                 }
