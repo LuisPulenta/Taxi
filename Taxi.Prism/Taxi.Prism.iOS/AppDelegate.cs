@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
+using Syncfusion.SfRating.XForms.iOS;
 using UIKit;
 
 
@@ -22,6 +24,8 @@ namespace Taxi.Prism.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            new SfBusyIndicatorRenderer();
+            new SfRatingRenderer();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

@@ -7,5 +7,14 @@
 
 		<!-- Application resource dictionary -->
 
-	</Application.Resources>
+    <ResourceDictionary>
+
+      <!-- Parameters -->
+      <x:String x:Key="UrlAPI">http://keypress.serveftp.net:88/TaxiApi/</x:String>
+
+    </ResourceDictionary>
+
+
+
+  </Application.Resources>
 </prism:PrismApplication>

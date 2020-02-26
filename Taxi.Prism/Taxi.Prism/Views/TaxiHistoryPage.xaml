@@ -2,8 +2,109 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Taxi.Prism.Views.TaxiHistoryPage"
              Title="{Binding Title}">
+  <AbsoluteLayout>
+    <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All" 
+                 Padding="5">
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Patente:"
+                   VerticalOptions="Center"/>
+        <Entry HorizontalOptions="FillAndExpand" 
+                   Placeholder="Ingrese Patente..." 
+                   Text="{Binding Plaque}"
+                   VerticalOptions="Center"/>
+        <Button BackgroundColor="Navy"
+                    Command="{Binding CheckPlaqueCommand}"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Margin="10,0"
+                    Text="Chequear"
+                    TextColor="White"/>
+      </StackLayout>
+      <rating:SfRating HorizontalOptions="Center" 
+                       IsEnabled="false"
+                             Margin="0,5"
+                             Precision="Exact"
+                             Value="{Binding Taxi.Qualification}" />
+      <Label FontAttributes="Bold" 
+                   FontSize="Large"
+                   HorizontalOptions="Center"
+                   Text="{Binding Taxi.Qualification, StringFormat='Qualification: {0:N2}'}"/>
 
+      <StackLayout Orientation="Horizontal">
+        <Label Text="N° de viajes:"/>
+        <Label Text="{Binding Taxi.NumberOfTrips, StringFormat='{0:N0}'}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Conductor:"/>
+        <Label Text="{Binding Taxi.User.FullName, StringFormat='{0:N0}'}"/>
+      </StackLayout>
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width=".8*" />
+          <ColumnDefinition Width=".8*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="48" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0"
+                   FontAttributes="Bold"
+                   Text="Fecha Inicio"/>
+        <Label Grid.Column="1"
+                   FontAttributes="Bold"
+                   Text="Calificación"/>
+        <Label Grid.Column="2"
+                   FontAttributes="Bold"
+                   Text="Comentarios"/>
+      </Grid>
+
+      <CollectionView ItemsSource="{Binding Taxi.Trips}">
+        <CollectionView.ItemsLayout>
+          <GridItemsLayout Orientation="Vertical"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+          <DataTemplate>
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".8*" />
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <Label Grid.Column="0"
+                               Text="{Binding StartDateLocal, StringFormat='{0:dd/MM/yyyy}'}"
+                               VerticalOptions="Center"/>
+              <Label Grid.Column="1"
+                               Text="{Binding Qualification, StringFormat='{0:N2}'}"
+                               VerticalOptions="Center"/>
+              <Label Grid.Column="2"
+                               Text="{Binding Remarks}"
+                               VerticalOptions="Center"/>
+              <Image Grid.Column="3" 
+                               Source="ic_more_vert"/>
+            </Grid>
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+    </StackLayout>
+    <busyindicator:SfBusyIndicator AnimationType="Gear" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                   AbsoluteLayout.LayoutFlags="All"
+                	                   BackgroundColor="Silver"
+                	                   HorizontalOptions="Center"
+                	                   TextColor="White"
+                	                   IsVisible="{Binding IsRunning}"
+                	                   Title="Loading..."
+                	                   VerticalOptions="Center"
+                	                   ViewBoxWidth="80"
+                	                   ViewBoxHeight="80" />
+
+  </AbsoluteLayout>
 </ContentPage>
