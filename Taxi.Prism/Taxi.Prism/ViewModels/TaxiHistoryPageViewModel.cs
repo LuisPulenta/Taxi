@@ -1,5 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Taxi.Common.Models;
 using Taxi.Common.Services;
@@ -8,15 +10,25 @@ namespace Taxi.Prism.ViewModels
 {
     public class TaxiHistoryPageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private TaxiResponse _taxi;
         private DelegateCommand _checkPlaqueCommand;
         private bool _isRunning;
+        private List<TripItemViewModel> _trips;
+
+        public List<TripItemViewModel> Trips
+        {
+            get => _trips;
+            set => SetProperty(ref _trips, value);
+        }
+
 
         public TaxiHistoryPageViewModel(
             INavigationService navigationService,
             IApiService apiService) : base(navigationService)
         {
+            _navigationService = navigationService;
             _apiService = apiService;
             Title = "Historia del Taxi";
         }
@@ -83,6 +95,24 @@ namespace Taxi.Prism.ViewModels
             }
 
             Taxi = (TaxiResponse)response.Result;
+            Trips = Taxi.Trips.Select(t => new TripItemViewModel(_navigationService)
+            {
+                EndDate = t.EndDate,
+                Id = t.Id,
+                Qualification = t.Qualification,
+                Remarks = t.Remarks,
+                Source = t.Source,
+                SourceLatitude = t.SourceLatitude,
+                SourceLongitude = t.SourceLongitude,
+                StartDate = t.StartDate,
+                Target = t.Target,
+                TargetLatitude = t.TargetLatitude,
+                TargetLongitude = t.TargetLongitude,
+                TripDetails = t.TripDetails,
+                User = t.User
+            }).ToList();
+
+
         }
     }
 }

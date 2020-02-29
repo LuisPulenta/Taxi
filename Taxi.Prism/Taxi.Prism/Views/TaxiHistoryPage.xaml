@@ -63,13 +63,17 @@
                    Text="Comentarios"/>
       </Grid>
 
-      <CollectionView ItemsSource="{Binding Taxi.Trips}">
+      <CollectionView ItemsSource="{Binding Trips}">
         <CollectionView.ItemsLayout>
           <GridItemsLayout Orientation="Vertical"/>
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
           <DataTemplate>
             <Grid>
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SelectTripCommand}"/>
+              </Grid.GestureRecognizers>
+
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".8*" />
                 <ColumnDefinition Width=".5*" />
@@ -84,6 +88,8 @@
                                VerticalOptions="Center"/>
               <Label Grid.Column="2"
                                Text="{Binding Remarks}"
+                               MaxLines="2"
+                               LineBreakMode="TailTruncation"
                                VerticalOptions="Center"/>
               <Image Grid.Column="3" 
                                Source="ic_more_vert"/>
