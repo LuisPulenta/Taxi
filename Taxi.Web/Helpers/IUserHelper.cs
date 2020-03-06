@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Threading.Tasks;
 using Taxi.Web.Data.Entities;
 using Taxi.Web.Models;
@@ -7,9 +8,11 @@ namespace Taxi.Web.Helpers
 {
     public interface IUserHelper
     {
-        Task<UserEntity> GetUserByEmailAsync(string email);
-
+        Task<UserEntity> GetUserAsync(string email);
+        
         Task<IdentityResult> AddUserAsync(UserEntity user, string password);
+
+        Task<UserEntity> AddUserAsync(AddUserViewModel model, string path);
 
         Task CheckRoleAsync(string roleName);
 
@@ -21,6 +24,17 @@ namespace Taxi.Web.Helpers
 
         Task LogoutAsync();
 
-        Task<UserEntity> AddUserAsync(AddUserViewModel model, string path);
+        Task<IdentityResult> ChangePasswordAsync(UserEntity user, string oldPassword, string newPassword);
+
+        Task<IdentityResult> UpdateUserAsync(UserEntity user);
+
+        Task<UserEntity> GetUserAsync(Guid userId);
+
+        Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password);
+
+        Task<string> GenerateEmailConfirmationTokenAsync(UserEntity user);
+
+        Task<IdentityResult> ConfirmEmailAsync(UserEntity user, string token);
+
     }
 }

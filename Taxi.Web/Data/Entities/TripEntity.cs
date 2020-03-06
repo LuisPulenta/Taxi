@@ -29,11 +29,11 @@ namespace Taxi.Web.Data.Entities
         public DateTime? EndDateLocal => EndDate?.ToLocalTime();
 
         [Display(Name = "Origen")]
-        [MaxLength(100, ErrorMessage = "El campo {0} debe tener {1} caracteres.")]
+        [MaxLength(500, ErrorMessage = "El campo {0} debe tener {1} caracteres.")]
         public string Source { get; set; }
 
         [Display(Name = "Destino")]
-        [MaxLength(100, ErrorMessage = "El campo {0} debe tener {1} caracteres.")]
+        [MaxLength(500, ErrorMessage = "El campo {0} debe tener {1} caracteres.")]
         public string Target { get; set; }
 
         [Display(Name = "Calificación")]

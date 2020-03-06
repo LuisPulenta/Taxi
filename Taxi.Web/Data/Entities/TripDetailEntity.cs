@@ -24,5 +24,9 @@ namespace Taxi.Web.Data.Entities
         public double Longitude { get; set; }
 
         public TripEntity Trip { get; set; }
+
+        [MaxLength(500, ErrorMessage = "El campo {0} debe tener {1} caracteres.")]
+        public string Address { get; set; }
+
     }
 }

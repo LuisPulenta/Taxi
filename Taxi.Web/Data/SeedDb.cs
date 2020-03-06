@@ -33,15 +33,15 @@ namespace Taxi.Web.Data
         }
 
         private async Task<UserEntity> CheckUserAsync(
-            string document,
-            string firstName,
-            string lastName,
-            string email,
-            string phone,
-            string address,
-            UserType userType)
+    string document,
+    string firstName,
+    string lastName,
+    string email,
+    string phone,
+    string address,
+    UserType userType)
         {
-            var user = await _userHelper.GetUserByEmailAsync(email);
+            var user = await _userHelper.GetUserAsync(email);
             if (user == null)
             {
                 user = new UserEntity
@@ -52,15 +52,21 @@ namespace Taxi.Web.Data
                     UserName = email,
                     PhoneNumber = phone,
                     Address = address,
-                    Document = document
+                    Document = document,
+                    UserType = userType
                 };
 
                 await _userHelper.AddUserAsync(user, "123456");
                 await _userHelper.AddUserToRoleAsync(user, userType.ToString());
+
+                var token = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
+                await _userHelper.ConfirmEmailAsync(user, token);
             }
 
             return user;
         }
+
+
 
         private async Task CheckRolesAsync()
         {
