@@ -123,7 +123,7 @@ namespace Taxi.Web.Controllers.API
                 .FirstOrDefaultAsync(t => t.Id == id);
             if (tripEntity == null)
             {
-                return BadRequest("Error002");
+                return BadRequest("Viaje no encontrado");
             }
 
             return Ok(_converterHelper.ToTripResponse(tripEntity));
@@ -170,7 +170,7 @@ namespace Taxi.Web.Controllers.API
                 .FirstOrDefaultAsync(t => t.Id == tripDetailsRequest.TripDetails.FirstOrDefault().TripId);
             if (trip == null)
             {
-                return BadRequest("Error002");
+                return BadRequest("Viaje no encontrado");
             }
 
             if (trip.TripDetails == null)
@@ -182,7 +182,6 @@ namespace Taxi.Web.Controllers.API
             {
                 trip.TripDetails.Add(new TripDetailEntity
                 {
-                    Address = tripDetailRequest.Address,
                     Date = DateTime.UtcNow,
                     Latitude = tripDetailRequest.Latitude,
                     Longitude = tripDetailRequest.Longitude
