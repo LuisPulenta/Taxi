@@ -25,6 +25,15 @@
         <Setter Property="TextColor" Value="{StaticResource ColorFont}" />
       </Style>
 
+      <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="{StaticResource ColorFontInverse}" />
+      </Style>
+
+      <Style TargetType="Picker">
+        <Setter Property="BackgroundColor" Value="{StaticResource ColorFontInverse}" />
+      </Style>
+
+
       <Style x:Key="SecondaryButton" TargetType="Button">
         <Setter Property="BackgroundColor" Value="{StaticResource ColorSecondary}" />
       </Style>
