@@ -22,10 +22,10 @@ namespace Taxi.Prism.Droid
             base.OnCreate(bundle);
             CrossCurrentActivity.Current.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
-            new SfBusyIndicatorRenderer();
-            new SfRatingRenderer();
             Xamarin.FormsMaps.Init(this, bundle);
+            new SfRatingRenderer();
+            new SfBusyIndicatorRenderer();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             LoadApplication(new App(new AndroidInitializer()));
         }
         public override void OnRequestPermissionsResult(

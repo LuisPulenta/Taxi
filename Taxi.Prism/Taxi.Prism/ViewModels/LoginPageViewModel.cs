@@ -4,6 +4,7 @@ using Prism.Navigation;
 using Taxi.Common.Helpers;
 using Taxi.Common.Models;
 using Taxi.Common.Services;
+using Taxi.Prism.Views;
 
 namespace Taxi.Prism.ViewModels
 {
@@ -125,8 +126,10 @@ namespace Taxi.Prism.ViewModels
 
         }
 
-        private void RegisterAsync()
+        private async void RegisterAsync()
         {
+            await _navigationService.NavigateAsync(nameof(RegisterPage));
         }
+
     }
 }

@@ -44,6 +44,8 @@
 
       <!-- Parameters -->
       <x:String x:Key="UrlAPI">http://keypress.serveftp.net:88/TaxiApi/</x:String>
+      <x:String x:Key="UrlNoImage">noimage.png</x:String>
+      
     </ResourceDictionary>
   </Application.Resources>
 </prism:PrismApplication>
