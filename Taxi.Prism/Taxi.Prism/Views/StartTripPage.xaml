@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+         	 xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"    
+           	 xmlns:i18n="clr-namespace:Taxi.Prism.Helpers"
+         	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Taxi.Prism.Views.StartTripPage"
+             BackgroundColor="{StaticResource ColorBackground}"
+             Title="{Binding Title}">
+
+  <AbsoluteLayout>
+    <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All" 
+                     Padding="5">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" 
+                       Grid.Column="0"
+                       Text="Patente:"
+                       VerticalOptions="Center"/>
+        <Entry Grid.Row="0" 
+                       Grid.Column="1"
+                       FontSize="38" 
+                       HorizontalOptions="FillAndExpand"
+                       Placeholder="ABC123" 
+                       Text="{Binding Plaque}"/>
+        <Label Grid.Row="1" 
+                       Grid.Column="0"
+                       HorizontalOptions="FillAndExpand" 
+                       Text="Origen:"
+                       VerticalOptions="Center"/>
+        <StackLayout Grid.Row="1" 
+                             Grid.Column="1"
+                             Orientation="Horizontal">
+          <Entry HorizontalOptions="FillAndExpand" 
+                 FontSize="Small"
+                           Placeholder="Ingrese Origen..."
+                           Text="{Binding Source}"/>
+          <ImageButton Command="{Binding GetAddressCommand}"
+                                 Source="ic_airport_shuttle"/>
+        </StackLayout>
+      </Grid>
+      <maps:Map x:Name="MyMap"
+                        MapType="Street"/>
+      <StackLayout Orientation="Horizontal">
+        <Button Command="{Binding StartTripCommand}" 
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="{Binding ButtonLabel}"/>
+        <Button Command="{Binding CancelTripCommand}" 
+                        IsVisible="{Binding IsSecondButtonVisible}"
+                        Style="{StaticResource DangerButton}"
+                        Text="Cancelar"/>
+      </StackLayout>
+    </StackLayout>
+    <busyindicator:SfBusyIndicator AnimationType="Gear" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                   AbsoluteLayout.LayoutFlags="All"
+                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   HorizontalOptions="Center"
+                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   IsVisible="{Binding IsRunning}"
+                	                   Title="Cargando..."
+                	                   VerticalOptions="Center"
+                	                   ViewBoxWidth="80"
+                	                   ViewBoxHeight="80" />
+  </AbsoluteLayout>
+</ContentPage>
