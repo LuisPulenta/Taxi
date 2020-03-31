@@ -27,11 +27,14 @@ namespace Taxi.Common.Models
         public string Password { get; set; }
 
         [Required]
+        [StringLength(20, MinimumLength = 6)]
+        public string PasswordConfirm { get; set; }
+
+        [Required]
         public int UserTypeId { get; set; } // 1: User, 2: Driver
 
         public byte[] PictureArray { get; set; }
 
-        public string PasswordConfirm { get; set; }
 
     }
 }

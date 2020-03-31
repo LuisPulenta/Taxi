@@ -17,6 +17,7 @@ namespace Taxi.Prism.ViewModels
         private string _password;
         private DelegateCommand _loginCommand;
         private DelegateCommand _registerCommand;
+        private DelegateCommand _forgotPasswordCommand;
 
         public LoginPageViewModel(INavigationService navigationService, IApiService apiServiceService) : base(navigationService)
         {
@@ -25,6 +26,8 @@ namespace Taxi.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiServiceService;
         }
+
+        public DelegateCommand ForgotPasswordCommand => _forgotPasswordCommand ?? (_forgotPasswordCommand = new DelegateCommand(ForgotPasswordAsync));
 
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
 
@@ -129,6 +132,11 @@ namespace Taxi.Prism.ViewModels
         private async void RegisterAsync()
         {
             await _navigationService.NavigateAsync(nameof(RegisterPage));
+        }
+
+        private async void ForgotPasswordAsync()
+        {
+            await _navigationService.NavigateAsync(nameof(RememberPasswordPage));
         }
 
     }

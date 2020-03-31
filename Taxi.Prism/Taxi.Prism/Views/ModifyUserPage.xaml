@@ -2,9 +2,122 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+         	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+           	 xmlns:i18n="clr-namespace:Taxi.Prism.Helpers"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Taxi.Prism.Views.ModifyUserPage"
              BackgroundColor="{StaticResource ColorBackground}"
              Title="{Binding Title}">
+
+
+  <AbsoluteLayout>
+    <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     Padding="5">
+      <ScrollView>
+        <StackLayout>
+          <ffimageloading:CachedImage Aspect="AspectFit"
+                                                Source="{Binding Image}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="150"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600">
+            <ffimageloading:CachedImage.Transformations>
+              <fftransformations:CircleTransformation />
+            </ffimageloading:CachedImage.Transformations>
+            <ffimageloading:CachedImage.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+            </ffimageloading:CachedImage.GestureRecognizers>
+          </ffimageloading:CachedImage>
+
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Documento:"
+                               VerticalOptions="Center"/>
+            <Entry Grid.Row="0"
+                               Grid.Column="1"
+                               Keyboard="Numeric"
+                               Placeholder="Ingrese Documento..."
+                               Text="{Binding User.Document}"/>
+
+            <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Nombre:"
+                               VerticalOptions="Center"/>
+            <Entry Grid.Row="1"
+                               Grid.Column="1"
+                               Placeholder="Ingrese Nombre..."
+                               Text="{Binding User.FirstName}"/>
+
+            <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Apellido:"
+                               VerticalOptions="Center"/>
+            <Entry Grid.Row="2"
+                               Grid.Column="1"
+                               Placeholder="Ingrese Apellido..."
+                               Text="{Binding User.LastName}"/>
+
+            <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="Domicilio:"
+                               VerticalOptions="Center"/>
+            <Entry Grid.Row="3"
+                               Grid.Column="1"
+                               Placeholder="Ingrese Domicilio..."
+                               Text="{Binding User.Address}"/>
+
+            <Label Grid.Row="4"
+                               Grid.Column="0"
+                               Text="Teléfono:"
+                               VerticalOptions="Center"/>
+            <Entry Grid.Row="4" 
+                               Grid.Column="1"
+                               Keyboard="Telephone"
+                               Placeholder="Ingrese Teléfono..."
+                               Text="{Binding User.PhoneNumber}"/>
+          </Grid>
+        </StackLayout>
+      </ScrollView>
+      <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand">
+        <Button Command="{Binding SaveCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="Guardar"/>
+        <Button Command="{Binding ChangePasswordCommand}"
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="Cambiar Password"
+                        Style="{StaticResource DangerButton}"/>
+      </StackLayout>
+    </StackLayout>
+    <busyindicator:SfBusyIndicator AnimationType="Gear" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                   AbsoluteLayout.LayoutFlags="All"
+                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   HorizontalOptions="Center"
+                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   IsVisible="{Binding IsRunning}"
+                	                   Title="Guardando..."
+                	                   VerticalOptions="Center"
+                	                   ViewBoxWidth="80"
+                	                   ViewBoxHeight="80" />
+  </AbsoluteLayout>
 
 </ContentPage>
