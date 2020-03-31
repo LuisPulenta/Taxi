@@ -3,12 +3,17 @@ using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Timers;
 using Taxi.Common.Helpers;
 using Taxi.Common.Models;
 using Taxi.Common.Services;
+using Taxi.Prism.Helpers;
 using Taxi.Prism.Views;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace Taxi.Prism.ViewModels
@@ -17,24 +22,31 @@ namespace Taxi.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IGeolocatorService _geolocatorService;
-        private readonly ApiService _apiService;
+        private readonly IApiService _apiService;
         private string _source;
         private string _buttonLabel;
         private bool _isSecondButtonVisible;
         private bool _isRunning;
         private bool _isEnabled;
+        private Position _position;
+        private TripResponse _tripResponse;
+        private UserResponse _user;
+        private TokenResponse _token;
+        private string _url;
+        private Timer _timer;
+        private Geocoder _geoCoder;
+        private TripDetailsRequest _tripDetailsRequest;
         private DelegateCommand _getAddressCommand;
         private DelegateCommand _startTripCommand;
-        private TripResponse _tripResponse;
-        private Position _position;
 
-        public StartTripPageViewModel(INavigationService navigationService, IGeolocatorService geolocatorService, ApiService apiService)
+        public StartTripPageViewModel(INavigationService navigationService, IGeolocatorService geolocatorService, IApiService apiService)
             : base(navigationService)
         {
             _navigationService = navigationService;
             _geolocatorService = geolocatorService;
             _apiService = apiService;
-            Title = "Comenzar Viaje";
+            _tripDetailsRequest = new TripDetailsRequest { TripDetails = new List<TripDetailRequest>() };
+            Title = "Iniciar Viaje";
             ButtonLabel = "Iniciar Viaje";
             IsEnabled = true;
             LoadSourceAsync();
@@ -52,12 +64,6 @@ namespace Taxi.Prism.ViewModels
             set => SetProperty(ref _isSecondButtonVisible, value);
         }
 
-        public string ButtonLabel
-        {
-            get => _source;
-            set => SetProperty(ref _source, value);
-        }
-
         public bool IsRunning
         {
             get => _isRunning;
@@ -70,6 +76,12 @@ namespace Taxi.Prism.ViewModels
             set => SetProperty(ref _isEnabled, value);
         }
 
+        public string ButtonLabel
+        {
+            get => _source;
+            set => SetProperty(ref _source, value);
+        }
+
         public string Source
         {
             get => _buttonLabel;
@@ -78,19 +90,31 @@ namespace Taxi.Prism.ViewModels
 
         private async void LoadSourceAsync()
         {
+            IsEnabled = false;
             await _geolocatorService.GetLocationAsync();
-            if (_geolocatorService.Latitude != 0 && _geolocatorService.Longitude != 0)
-            {
-                _position = new Position(_geolocatorService.Latitude, _geolocatorService.Longitude);
-                Geocoder geoCoder = new Geocoder();
-                IEnumerable<string> sources = await geoCoder.GetAddressesForPositionAsync(_position);
-                List<string> addresses = new List<string>(sources);
 
-                if (addresses.Count > 0)
-                {
-                    Source = addresses[0];
-                }
+            if (_geolocatorService.Latitude == 0 && _geolocatorService.Longitude == 0)
+            {
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Error de Geolocalización",
+                    "Aceptar");
+                await _navigationService.GoBackAsync();
+                return;
             }
+
+            _position = new Position(_geolocatorService.Latitude, _geolocatorService.Longitude);
+            Geocoder geoCoder = new Geocoder();
+            IEnumerable<string> sources = await geoCoder.GetAddressesForPositionAsync(_position);
+            List<string> addresses = new List<string>(sources);
+
+            if (addresses.Count > 1)
+            {
+                Source = addresses[0];
+            }
+
+            IsEnabled = true;
         }
 
         private async void StartTripAsync()
@@ -100,24 +124,25 @@ namespace Taxi.Prism.ViewModels
             {
                 return;
             }
+
             IsRunning = true;
             IsEnabled = false;
 
-            string url = App.Current.Resources["UrlAPI"].ToString();
-            bool connection = await _apiService.CheckConnectionAsync(url);
+            _url = App.Current.Resources["UrlAPI"].ToString();
+            bool connection = await _apiService.CheckConnectionAsync(_url);
             if (!connection)
             {
                 IsRunning = false;
                 IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Revise su conexión a Internet",
+                    "Revise su conexión aInternet",
                     "Aceptar");
                 return;
             }
 
-            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
-            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            _user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            _token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
             TripRequest tripRequest = new TripRequest
             {
@@ -125,17 +150,17 @@ namespace Taxi.Prism.ViewModels
                 Latitude = _geolocatorService.Latitude,
                 Longitude = _geolocatorService.Longitude,
                 Plaque = Plaque,
-                UserId = new Guid(user.Id)
+                UserId = new Guid(_user.Id)
             };
 
-            Response response = await _apiService.NewTripAsync(url, "api", "/Trips", tripRequest, "bearer", token.Token);
+            Response response = await _apiService.NewTripAsync(_url, "api", "/Trips", tripRequest, "bearer", _token.Token);
 
             if (!response.IsSuccess)
             {
                 IsRunning = false;
                 IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert(
-                    "Error",
+                    "Error", 
                     response.Message,
                     "Aceptar");
                 return;
@@ -148,6 +173,71 @@ namespace Taxi.Prism.ViewModels
             IsRunning = false;
             IsEnabled = true;
 
+            _timer = new Timer
+            {
+                Interval = 1000
+            };
+
+            _timer.Elapsed += Timer_Elapsed;
+            _timer.Start();
+        }
+
+        private async void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            await _geolocatorService.GetLocationAsync();
+            if (_geolocatorService.Latitude == 0 && _geolocatorService.Longitude == 0)
+            {
+                return;
+            }
+
+            Position previousPosition = new Position(_position.Latitude, _position.Longitude);
+            _position = new Position(_geolocatorService.Latitude, _geolocatorService.Longitude);
+            double distance = GeoHelper.GetDistance(previousPosition, _position, UnitOfLength.Kilometers);
+
+            if (distance < 0.003 || double.IsNaN(distance))
+            {
+                return;
+            }
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                StartTripPage.GetInstance().DrawLine(previousPosition, _position);
+            });
+
+            _tripDetailsRequest.TripDetails.Add(new TripDetailRequest
+            {
+                Latitude = _position.Latitude,
+                Longitude = _position.Longitude,
+                TripId = _tripResponse.Id
+            });
+
+            if (_tripDetailsRequest.TripDetails.Count > 9)
+            {
+                SendTripDetailsAsync();
+            }
+        }
+
+        private async Task SendTripDetailsAsync()
+        {
+            TripDetailsRequest tripDetailsRequestCloned = CloneTripDetailsRequest(_tripDetailsRequest);
+            _tripDetailsRequest.TripDetails.Clear();
+            await _apiService.AddTripDetailsAsync(_url, "api", "/Trips/AddTripDetails", tripDetailsRequestCloned, "bearer", _token.Token);
+        }
+
+        private TripDetailsRequest CloneTripDetailsRequest(TripDetailsRequest tripDetailsRequest)
+        {
+            TripDetailsRequest tripDetailsRequestCloned = new TripDetailsRequest
+            {
+                TripDetails = tripDetailsRequest.TripDetails.Select(d => new TripDetailRequest
+                {
+                    Address = d.Address,
+                    Latitude = d.Latitude,
+                    Longitude = d.Longitude,
+                    TripId = d.TripId
+                }).ToList()
+            };
+
+            return tripDetailsRequestCloned;
         }
 
         private async Task<bool> ValidateDataAsync()
@@ -156,7 +246,7 @@ namespace Taxi.Prism.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Debe ingresar una Patente",
+                    "Ingrese una Patente",
                     "Aceptar");
                 return false;
             }
@@ -166,7 +256,7 @@ namespace Taxi.Prism.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert(
                     "Error",
-                    "La Patente debe tener 3 Letras y 3 Números",
+                    "La Patente debe tener 3 letras y 3 números",
                     "Aceptar");
                 return false;
             }
