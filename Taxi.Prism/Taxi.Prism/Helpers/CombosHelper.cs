@@ -13,5 +13,19 @@ namespace Taxi.Prism.Helpers
                 new Role { Id = 2, Name = "Conductor" }
             };
         }
+
+
+        public static List<Comment> GetComments()
+        {
+            return new List<Comment>
+        {
+            new Comment { Id = 1, Name = "Muy buen servicio"},
+            new Comment { Id = 2, Name = "Conductor muy amigable"},
+            new Comment { Id = 2, Name = "Taxi limpio"},
+            new Comment { Id = 2, Name = "Mal conductor"},
+            new Comment { Id = 2, Name = "Cobro mayor a lo esperado"},
+            new Comment { Id = 2, Name = "Taxi sucio o en mal estado"}
+        };
+        }
     }
 }

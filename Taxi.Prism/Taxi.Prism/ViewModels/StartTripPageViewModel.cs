@@ -125,6 +125,37 @@ namespace Taxi.Prism.ViewModels
                 return;
             }
 
+            if (IsSecondButtonVisible)
+            {
+                await EndTripAsync();
+            }
+            else
+            {
+                await BeginTripAsync();
+            }
+        }
+
+
+
+        private async Task EndTripAsync()
+        {
+            _timer.Stop();
+
+            if (_tripDetailsRequest.TripDetails.Count > 0)
+            {
+                await SendTripDetailsAsync();
+            }
+
+            NavigationParameters parameters = new NavigationParameters
+            {
+                { "tripId", _tripResponse.Id },
+            };
+            await _navigationService.NavigateAsync(nameof(EndTripPage), parameters);
+        }
+
+
+        private async Task BeginTripAsync()
+        {
             IsRunning = true;
             IsEnabled = false;
 
@@ -263,5 +294,15 @@ namespace Taxi.Prism.ViewModels
 
             return true;
         }
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            if (IsSecondButtonVisible && _timer != null)
+            {
+                _timer.Start();
+            }
+        }
+
     }
 }
