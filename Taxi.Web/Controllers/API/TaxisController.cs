@@ -14,13 +14,14 @@ namespace Taxi.Web.Controllers.API
         private readonly DataContext _context;
         private readonly IConverterHelper _converterHelper;
 
-        public TaxisController(DataContext context, IConverterHelper converterHelper)
+        public TaxisController(
+            DataContext context,
+            IConverterHelper converterHelper)
         {
             _context = context;
             _converterHelper = converterHelper;
         }
 
-        // GET: api/Taxis/5
         [HttpGet("{plaque}")]
         public async Task<IActionResult> GetTaxiEntity([FromRoute] string plaque)
         {
@@ -28,23 +29,33 @@ namespace Taxi.Web.Controllers.API
             {
                 return BadRequest(ModelState);
             }
-            plaque = plaque.ToUpper();
+
             TaxiEntity taxiEntity = await _context.Taxis
-                .Include(t => t.User) //Conductor
+                .Include(t => t.User) // Driver
                 .Include(t => t.Trips)
                 .ThenInclude(t => t.TripDetails)
                 .Include(t => t.Trips)
-                .ThenInclude(t => t.User) //Pasajero
+                .ThenInclude(t => t.User) // Passanger
                 .FirstOrDefaultAsync(t => t.Plaque == plaque);
-
 
             if (taxiEntity == null)
             {
                 taxiEntity = new TaxiEntity { Plaque = plaque.ToUpper() };
                 _context.Taxis.Add(taxiEntity);
                 await _context.SaveChangesAsync();
+                return Ok(_converterHelper.ToTaxiResponse2(taxiEntity));
             }
-            return Ok(_converterHelper.ToTaxiResponse(taxiEntity));
+
+            if (taxiEntity.Trips.Count==0)
+            {
+                return Ok(_converterHelper.ToTaxiResponse2(taxiEntity));
+            }
+            else
+            {
+                return Ok(_converterHelper.ToTaxiResponse(taxiEntity));
+            }
+
+            
         }
     }
 }

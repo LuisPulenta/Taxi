@@ -95,22 +95,33 @@ namespace Taxi.Prism.ViewModels
             }
 
             Taxi = (TaxiResponse)response.Result;
-            Trips = Taxi.Trips.Select(t => new TripItemViewModel(_navigationService)
+
+            if (Taxi.Trips==null)
             {
-                EndDate = t.EndDate,
-                Id = t.Id,
-                Qualification = t.Qualification,
-                Remarks = t.Remarks,
-                Source = t.Source,
-                SourceLatitude = t.SourceLatitude,
-                SourceLongitude = t.SourceLongitude,
-                StartDate = t.StartDate,
-                Target = t.Target,
-                TargetLatitude = t.TargetLatitude,
-                TargetLongitude = t.TargetLongitude,
-                TripDetails = t.TripDetails,
-                User = t.User
-            }).ToList();
+                Trips = null;
+            }
+            else
+            {
+                Trips = Taxi.Trips.Select(t => new TripItemViewModel(_navigationService)
+                {
+                    EndDate = t.EndDate,
+                    Id = t.Id,
+                    Qualification = t.Qualification,
+                    Remarks = t.Remarks,
+                    Source = t.Source,
+                    SourceLatitude = t.SourceLatitude,
+                    SourceLongitude = t.SourceLongitude,
+                    StartDate = t.StartDate,
+                    Target = t.Target,
+                    TargetLatitude = t.TargetLatitude,
+                    TargetLongitude = t.TargetLongitude,
+                    TripDetails = t.TripDetails,
+                    User = t.User
+                }).ToList();
+            }
+
+
+            
 
 
         }

@@ -1,6 +1,5 @@
 ﻿using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Taxi.Common.Services;
 using Xamarin.Forms;

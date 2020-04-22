@@ -8,6 +8,8 @@ namespace Taxi.Web.Helpers
     {
         TaxiResponse ToTaxiResponse(TaxiEntity taxiEntity);
 
+        TaxiResponse ToTaxiResponse2(TaxiEntity taxiEntity);
+
         TripResponse ToTripResponse(TripEntity tripEntity);
 
         UserResponse ToUserResponse(UserEntity user);

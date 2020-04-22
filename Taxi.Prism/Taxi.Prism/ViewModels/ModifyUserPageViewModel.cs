@@ -34,6 +34,7 @@ namespace Taxi.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             _filesHelper = filesHelper;
+            Image = App.Current.Resources["UrlNoImage"].ToString();
             Title = "Modificar Usuario";
             IsEnabled = true;
             User = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
