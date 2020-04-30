@@ -55,37 +55,50 @@ namespace Taxi.Prism.ViewModels
                 {
                     Icon = "ic_action_airport_shuttle",
                     PageName = "HomePage",
-                    Title = "Nuevo viaje"
+                    Title = "Nuevo viaje",
+                    IsLoginRequired=false
                 },
                 new Menu
                 {
                     Icon = "ic_action_local_taxi",
                     PageName = "TaxiHistoryPage",
-                    Title = "Ver historial del Taxi"
+                    Title = "Ver historial del Taxi",
+                    IsLoginRequired=false
+                },
+                new Menu
+                {
+                    Icon = "ic_location_on",
+                    PageName = "MyTripsPage",
+                    Title = "Mis Viajes",
+                    IsLoginRequired = true
                 },
                 new Menu
                 {
                     Icon = "ic_action_people",
                     PageName = "GroupPage",
-                    Title = "Administrar mi grupo de usuarios"
+                    Title = "Administrar mi grupo de usuarios",
+                    IsLoginRequired=true
                 },
                 new Menu
                 {
                     Icon = "ic_action_account_circle",
                     PageName = "ModifyUserPage",
-                    Title = "Modificar Usuario"
+                    Title = "Modificar Usuario",
+                    IsLoginRequired=true
                 },
                 new Menu
                 {
                     Icon = "ic_action_report",
                     PageName = "ReportPage",
-                    Title = "Informar un incidente"
+                    Title = "Informar un incidente",
+                    IsLoginRequired=false
                 },
                 new Menu
                 {
                     Icon = "ic_action_exit_to_app",
                     PageName = "LoginPage",
-                    Title = Settings.IsLogin ? "Cerrar sesión" : "Iniciar sesión"
+                    Title = Settings.IsLogin ? "Cerrar sesión" : "Iniciar sesión",
+                    IsLoginRequired=false
                 }
             };
 
@@ -94,7 +107,8 @@ namespace Taxi.Prism.ViewModels
                 {
                     Icon = m.Icon,
                     PageName = m.PageName,
-                    Title = m.Title
+                    Title = m.Title,
+                    IsLoginRequired=m.IsLoginRequired
                 }).ToList());
 
 

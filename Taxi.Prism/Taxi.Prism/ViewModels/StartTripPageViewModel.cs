@@ -38,6 +38,7 @@ namespace Taxi.Prism.ViewModels
         private TripDetailsRequest _tripDetailsRequest;
         private DelegateCommand _getAddressCommand;
         private DelegateCommand _startTripCommand;
+        private DelegateCommand _cancelTripCommand;
 
         public StartTripPageViewModel(INavigationService navigationService, IGeolocatorService geolocatorService, IApiService apiService)
             : base(navigationService)
@@ -55,6 +56,8 @@ namespace Taxi.Prism.ViewModels
         public DelegateCommand GetAddressCommand => _getAddressCommand ?? (_getAddressCommand = new DelegateCommand(LoadSourceAsync));
 
         public DelegateCommand StartTripCommand => _startTripCommand ?? (_startTripCommand = new DelegateCommand(StartTripAsync));
+
+        public DelegateCommand CancelTripCommand => _cancelTripCommand ?? (_cancelTripCommand = new DelegateCommand(CancelTripAsync));
 
         public string Plaque { get; set; }
 
@@ -303,6 +306,43 @@ namespace Taxi.Prism.ViewModels
                 _timer.Start();
             }
         }
+
+        private async void CancelTripAsync()
+        {
+            bool answer = await App.Current.MainPage.DisplayAlert(
+                "Atención!!",
+                "Está seguro de cancelar este viaje?",
+                "Sí",
+                "No");
+            if (!answer)
+            {
+                return;
+            }
+
+            IsRunning = true;
+            IsEnabled = false;
+
+ 
+            bool connection = await _apiService.CheckConnectionAsync(_url);
+            if (!connection)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "REvise su conexión a Internet",
+                    "Aceptar");
+                return;
+            }
+            _timer.Stop();
+            _apiService.DeleteAsync(_url, "api", "/Trips", _tripResponse.Id, "bearer", _token.Token);
+
+            IsRunning = false;
+            IsEnabled = true;
+
+            await _navigationService.GoBackToRootAsync();
+        }
+
 
     }
 }

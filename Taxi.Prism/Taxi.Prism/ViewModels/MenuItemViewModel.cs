@@ -26,7 +26,15 @@ namespace Taxi.Prism.ViewModels
                 Settings.Token = null;
             }
 
-            await _navigationService.NavigateAsync($"/TaxiMasterDetailPage/NavigationPage/{PageName}");
+            if (IsLoginRequired && !Settings.IsLogin)
+            {
+                await _navigationService.NavigateAsync($"/TaxiMasterDetailPage/NavigationPage/LoginPage");
+            }
+            else
+            {
+                await _navigationService.NavigateAsync($"/TaxiMasterDetailPage/NavigationPage/{PageName}");
+            }
+
         }
     }
 }
