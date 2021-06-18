@@ -46,6 +46,8 @@ namespace Taxi.Prism.Helpers
                     distance += GetDistance(a, b, UnitOfLength.Kilometers) * 1000;
                 }
 
+                //Carga minima 3600$ + 110$ por cada 78m recorridos
+
                 decimal value = (decimal)(3600 + Math.Truncate(distance / 78) * 110);
 
                 return new TripSummary

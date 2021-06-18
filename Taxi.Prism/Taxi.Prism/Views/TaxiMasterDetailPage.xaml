@@ -20,9 +20,7 @@
       
       <StackLayout Padding="20">
         <RelativeLayout>
-          <RelativeLayout.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding ModifyUserCommand}"/>
-          </RelativeLayout.GestureRecognizers>
+
 
           <Image x:Name="Logo" HorizontalOptions="Center"
                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=X,Factor=1,Constant=60}"
@@ -38,6 +36,10 @@
                                                 Margin="5"
                                                 RetryCount= "3"
                                                 RetryDelay= "600">
+            <ffimageloading:CachedImage.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding ModifyUserCommand}"/>
+            </ffimageloading:CachedImage.GestureRecognizers>
+
             <ffimageloading:CachedImage.Transformations>
               <fftransformations:CircleTransformation />
             </ffimageloading:CachedImage.Transformations>

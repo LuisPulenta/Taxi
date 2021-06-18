@@ -16,6 +16,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
+
 namespace Taxi.Prism.ViewModels
 {
     public class StartTripPageViewModel : ViewModelBase
@@ -330,7 +331,7 @@ namespace Taxi.Prism.ViewModels
                 IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert(
                     "Error",
-                    "REvise su conexión a Internet",
+                    "Revise su conexión a Internet",
                     "Aceptar");
                 return;
             }

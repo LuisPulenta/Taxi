@@ -3,16 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-          	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
-             x:Class="Taxi.Prism.Views.MyTripsPage"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+         	   xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Class="Taxi.Prism.Views.UserTripsPage"
              BackgroundColor="{StaticResource ColorBackground}"
              Title="{Binding Title}">
+
   <AbsoluteLayout>
     <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
                      Padding="5">
+      <StackLayout Orientation="Horizontal">
+        <ffimageloading:CachedImage x:Name="Picture"
+                                            Grid.Column="0"
+                                            Aspect="AspectFill"
+                                            Source="{Binding User.User.PictureFullPath}" 
+                                            CacheDuration= "50"
+                                            Margin="5"
+                                            RetryCount= "3"
+                                            RetryDelay= "600"
+                                            WidthRequest="120">
+          <ffimageloading:CachedImage.Transformations>
+            <fftransformations:CircleTransformation />
+          </ffimageloading:CachedImage.Transformations>
+        </ffimageloading:CachedImage>
+        <StackLayout VerticalOptions="Center">
+          <Label FontAttributes="Bold" 
+                           FontSize="Large" 
+                           Text="{Binding User.User.FullName}"/>
+          <Label Text="{Binding User.User.Email}"
+                           TextColor="{StaticResource ColorAccent}"/>
+          <Label Text="{Binding User.User.PhoneNumber}"/>
+        </StackLayout>
+      </StackLayout>
       <Grid>
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
@@ -26,11 +52,11 @@
         <Label Grid.Column="0"
                        Grid.Row="0"
                        FontAttributes="Bold"
-                       Text="Desde:"/>
+                       Text="Fecha Inicio:"/>
         <Label Grid.Column="1"
                        Grid.Row="0"
                        FontAttributes="Bold"
-                       Text="Hasta:"/>
+                       Text="Fecha Fin:"/>
         <DatePicker  Grid.Column="0"
                              Grid.Row="1"
                              Date="{Binding StartDate}"/>
@@ -55,12 +81,12 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0"
                        FontAttributes="Bold"
-                       Text="Fecha:"/>
+                       Text="Fecha Inicio:"/>
         <Label Grid.Column="1"
                        FontAttributes="Bold"
                        MaxLines="1"
                        LineBreakMode="TailTruncation"
-                       Text="Calif"/>
+                       Text="*"/>
         <Label Grid.Column="2"
                        FontAttributes="Bold"
                        Text="Origen:"/>
@@ -72,19 +98,17 @@
           <GridItemsLayout Orientation="Vertical"/>
         </CollectionView.ItemsLayout>
       </CollectionView>
-
     </StackLayout>
     <busyindicator:SfBusyIndicator AnimationType="Gear" 
-                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
-                	                    AbsoluteLayout.LayoutFlags="All"
-                	                    BackgroundColor="{StaticResource ColorDanger}"
-                	                    HorizontalOptions="Center"
-                	                    TextColor="White"
-                	                    IsVisible="{Binding IsRunning}"
-                	                    Title="Cargando..."
-                	                    VerticalOptions="Center"
-                	                    ViewBoxWidth="80"
-                	                    ViewBoxHeight="80" />
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                   AbsoluteLayout.LayoutFlags="All"
+                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   HorizontalOptions="Center"
+                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   IsVisible="{Binding IsRunning}"
+                	                   Title="Cargando..."
+                	                   VerticalOptions="Center"
+                	                   ViewBoxWidth="80"
+                	                   ViewBoxHeight="80" />
   </AbsoluteLayout>
-
 </ContentPage>

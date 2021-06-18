@@ -12,12 +12,26 @@ namespace Taxi.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
+        
         private bool _isRunning;
+        public bool IsRunning { get => _isRunning; set => SetProperty(ref _isRunning, value);}
+        
         private bool _isEnabled;
+        public bool IsEnabled { get => _isEnabled; set => SetProperty(ref _isEnabled, value);}
+
         private string _password;
+        public string Password {get => _password; set => SetProperty(ref _password, value);}
+
         private DelegateCommand _loginCommand;
+        public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
+
         private DelegateCommand _registerCommand;
+        public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(RegisterAsync));
+
         private DelegateCommand _forgotPasswordCommand;
+        public DelegateCommand ForgotPasswordCommand => _forgotPasswordCommand ?? (_forgotPasswordCommand = new DelegateCommand(ForgotPasswordAsync));
+
+        public string Email { get; set; }
 
         public LoginPageViewModel(INavigationService navigationService, IApiService apiServiceService) : base(navigationService)
         {
@@ -25,32 +39,6 @@ namespace Taxi.Prism.ViewModels
             IsEnabled = true;
             _navigationService = navigationService;
             _apiService = apiServiceService;
-        }
-
-        public DelegateCommand ForgotPasswordCommand => _forgotPasswordCommand ?? (_forgotPasswordCommand = new DelegateCommand(ForgotPasswordAsync));
-
-        public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
-
-        public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(RegisterAsync));
-
-        public bool IsRunning
-        {
-            get => _isRunning;
-            set => SetProperty(ref _isRunning, value);
-        }
-
-        public bool IsEnabled
-        {
-            get => _isEnabled;
-            set => SetProperty(ref _isEnabled, value);
-        }
-
-        public string Email { get; set; }
-
-        public string Password
-        {
-            get => _password;
-            set => SetProperty(ref _password, value);
         }
 
         private async void LoginAsync()
@@ -138,6 +126,5 @@ namespace Taxi.Prism.ViewModels
         {
             await _navigationService.NavigateAsync(nameof(RememberPasswordPage));
         }
-
     }
 }

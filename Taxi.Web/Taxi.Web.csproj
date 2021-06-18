@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\images\noimage.png" />
+    <Content Remove="wwwroot\images\Users\noimage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\noimage.png" />
+    <None Include="wwwroot\images\Users\noimage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MailKit" Version="2.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
