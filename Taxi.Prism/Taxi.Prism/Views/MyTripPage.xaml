@@ -8,7 +8,7 @@
              ios:Page.UseSafeArea="true"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Taxi.Prism.Views.MyTripPage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204 "
              Title="{Binding Title}">
 
   <AbsoluteLayout>
@@ -53,39 +53,39 @@
             <Label Grid.Column="0" 
                                Grid.Row="0"
                                FontAttributes="Bold" 
-                               Text="Fecha Inicio}"/>
+                               Text="Fecha Inicio:"/>
             <Label Grid.Column="1" 
                                Grid.Row="0"
-                               Text="{Binding Trip.StartDateLocal, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                               Text="{Binding Trip.StartDateLocal, StringFormat='{0:dd/MM/yyyy HH:mm}'}"/>
 
             <Label Grid.Column="0" 
                                Grid.Row="1"
                                FontAttributes="Bold" 
-                               Text="Fecha Fin"/>
+                               Text="Fecha Fin:"/>
             <Label Grid.Column="1" 
                                Grid.Row="1"
-                               Text="{Binding Trip.EndDateLocal, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                               Text="{Binding Trip.EndDateLocal, StringFormat='{0:dd/MM/yyyy HH:mm}'}"/>
 
             <Label Grid.Column="0" 
                                Grid.Row="2"
                                FontAttributes="Bold" 
-                               Text="Origen"/>
+                               Text="Origen:"/>
             <Label Grid.Column="1" 
                                Grid.Row="2"
-                               Text="{Binding Trip.Source, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                               Text="{Binding Trip.Source, StringFormat='{0:dd/MM/yyyy HH:mm}'}"/>
 
             <Label Grid.Column="0" 
                                Grid.Row="3"
                                FontAttributes="Bold" 
-                               Text="Destino"/>
+                               Text="Destino:"/>
             <Label Grid.Column="1" 
                                Grid.Row="3"
-                               Text="{Binding Trip.Target, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                               Text="{Binding Trip.Target, StringFormat='{0:dd/MM/yyyy HH:mm}'}"/>
 
             <Label Grid.Row="4"
                                Grid.Column="0" 
                                FontAttributes="Bold" 
-                               Text="Distancia recorrida"
+                               Text="Dist. recorrida:"
                                VerticalOptions="Center"/>
             <Label Grid.Row="4"
                                Grid.Column="1"
@@ -94,7 +94,7 @@
             <Label Grid.Row="5"
                                Grid.Column="0" 
                                FontAttributes="Bold" 
-                               Text="Tiempo"/>
+                               Text="Tiempo:"/>
             <Label Grid.Row="5"
                                Grid.Column="1"
                                Text="{Binding Time}"/>
@@ -102,7 +102,7 @@
             <Label Grid.Row="6"
                                Grid.Column="0" 
                                FontAttributes="Bold" 
-                               Text="Monto aproximado"/>
+                               Text="Monto aprox.:"/>
             <Label Grid.Row="6"
                                Grid.Column="1"
                                Text="{Binding Value}"/>
@@ -110,7 +110,7 @@
             <Label Grid.Column="0" 
                                Grid.Row="7"
                                FontAttributes="Bold" 
-                               Text="Comentarios"/>
+                               Text="Comentarios:"/>
             <Label Grid.Column="1" 
                                Grid.Row="7"
                                Text="{Binding Trip.Remarks}"/>

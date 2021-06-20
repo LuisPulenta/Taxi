@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
-         	 xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"    
-           	 xmlns:i18n="clr-namespace:Taxi.Prism.Helpers"
-         	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+         	   xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"    
+           	 xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+         	   xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Taxi.Prism.Views.StartTripPage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204 "
              Title="{Binding Title}">
 
   <AbsoluteLayout>
@@ -20,55 +20,71 @@
           <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="7*"/>
           <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" 
-                       Grid.Column="0"
-                       Text="Patente:"
-                       VerticalOptions="Center"/>
-        <Entry Grid.Row="0" 
-                       Grid.Column="1"
-                       FontSize="38" 
-                       HorizontalOptions="FillAndExpand"
-                       Placeholder="ABC123" 
-                       Text="{Binding Plaque}"/>
-        <Label Grid.Row="1" 
-                       Grid.Column="0"
-                       HorizontalOptions="FillAndExpand" 
-                       Text="Origen:"
-                       VerticalOptions="Center"/>
-        <StackLayout Grid.Row="1" 
-                             Grid.Column="1"
-                             Orientation="Horizontal">
-          <Entry HorizontalOptions="FillAndExpand" 
-                 FontSize="Small"
-                           Placeholder="Ingrese Origen..."
-                           Text="{Binding Source}"/>
-          <ImageButton Command="{Binding GetAddressCommand}"
-                                 Source="ic_airport_shuttle"/>
-        </StackLayout>
+
+        <inputLayout:SfTextInputLayout 
+              Grid.Row="0"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              Hint="Patente:"
+              ContainerType="Outlined">
+          <Entry 
+                Placeholder="ABC123"
+                Text="{Binding Plaque}" />
+        </inputLayout:SfTextInputLayout>
+
+
+        <inputLayout:SfTextInputLayout 
+              Grid.Row="1"
+              Grid.Column="0"
+              Hint="Origen:"
+              ContainerType="Outlined">
+          <Entry 
+                Placeholder="Ingrese Origen..."
+                Text="{Binding Source}" />
+        </inputLayout:SfTextInputLayout>
+
+        <ImageButton    
+                   Command="{Binding GetAddressCommand}"
+                   Margin="0,-20,0,20"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   HeightRequest="50"
+                   Source="ic_location_on"
+                   VerticalOptions="EndAndExpand"
+                   CornerRadius="20"
+                   BackgroundColor="DarkTurquoise"
+                   
+                   />
+
       </Grid>
       <maps:Map x:Name="MyMap"
                         MapType="Street"/>
       <StackLayout Orientation="Horizontal">
         <Button Command="{Binding StartTripCommand}" 
                         IsEnabled="{Binding IsEnabled}"
-                        Text="{Binding ButtonLabel}"/>
+                        Text="{Binding ButtonLabel}"
+                        BackgroundColor="DarkTurquoise"
+                        TextColor="Black"
+                        CornerRadius="20"/>
         <Button Command="{Binding CancelTripCommand}" 
                         IsVisible="{Binding IsSecondButtonVisible}"
                         Style="{StaticResource DangerButton}"
-                        Text="Cancelar"/>
+                        Text="Cancelar"
+                        BackgroundColor="Crimson"
+                        CornerRadius="20"/>
       </StackLayout>
     </StackLayout>
     <busyindicator:SfBusyIndicator AnimationType="Gear" 
-                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                     AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                   AbsoluteLayout.LayoutFlags="All"
-                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   BackgroundColor="Transparent"
                 	                   HorizontalOptions="Center"
-                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   TextColor="Blue"
                 	                   IsVisible="{Binding IsRunning}"
-                	                   Title="Cargando..."
+                	                   Title="Iniciando Viaje..."
                 	                   VerticalOptions="Center"
                 	                   ViewBoxWidth="80"
                 	                   ViewBoxHeight="80" />

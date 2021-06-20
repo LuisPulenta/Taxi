@@ -9,7 +9,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              x:Class="Taxi.Prism.Views.GroupPage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204 "
              Title="{Binding Title}">
   <ContentPage.ToolbarItems>
     <ToolbarItem Command="{Binding AddUserCommand}" 
@@ -28,7 +28,8 @@
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
           <DataTemplate>
-            <Frame CornerRadius="10">
+            <Frame CornerRadius="10"
+                   BackgroundColor="Moccasin">
               <Grid>
                 <Grid.GestureRecognizers>
                   <TapGestureRecognizer Command="{Binding SelectUserCommand}"/>
@@ -71,9 +72,9 @@
     <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                         AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                    AbsoluteLayout.LayoutFlags="All"
-                	                    BackgroundColor="{StaticResource ColorAccent}"
+                	                    BackgroundColor="Transparent"
                 	                    HorizontalOptions="Center"
-                	                    TextColor="{StaticResource ColorFontInverse}"
+                	                    TextColor="Blue"
                 	                    IsVisible="{Binding IsRunning}"
                 	                    Title="Cargando..."
                 	                    VerticalOptions="Center"

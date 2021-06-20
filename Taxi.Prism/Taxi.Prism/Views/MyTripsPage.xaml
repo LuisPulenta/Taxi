@@ -4,10 +4,11 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
           	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              x:Class="Taxi.Prism.Views.MyTripsPage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204"
              Title="{Binding Title}">
   <AbsoluteLayout>
     <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -21,26 +22,35 @@
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="*" />
-          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="48" />
         </Grid.ColumnDefinitions>
-        <Label Grid.Column="0"
-                       Grid.Row="0"
-                       FontAttributes="Bold"
-                       Text="Desde:"/>
-        <Label Grid.Column="1"
-                       Grid.Row="0"
-                       FontAttributes="Bold"
-                       Text="Hasta:"/>
-        <DatePicker  Grid.Column="0"
-                             Grid.Row="1"
-                             Date="{Binding StartDate}"/>
-        <DatePicker  Grid.Column="1"
-                             Grid.Row="1"
-                             Date="{Binding EndDate}"/>
+
+
+        <inputLayout:SfTextInputLayout 
+              Hint="Desde:" 
+              Grid.Column="0"
+              Grid.Row="0"
+              ContainerType="Outlined"
+              >
+          <DatePicker Format="dd/MM/yyyy" Date="{Binding StartDate}"/>
+        </inputLayout:SfTextInputLayout>
+
+        <inputLayout:SfTextInputLayout 
+              Hint="Hasta:" 
+              Grid.Column="1"
+              Grid.Row="0"
+              ContainerType="Outlined"
+              >
+          <DatePicker Format="dd/MM/yyyy" Date="{Binding EndDate}"/>
+        </inputLayout:SfTextInputLayout>
+
         <ImageButton Grid.Column="2"
                              Grid.Row="0"
                              Grid.RowSpan="2"
+                             Margin="0,5,0,20"
                              Command="{Binding RefreshCommand}" 
+                             BackgroundColor="DarkTurquoise"
+                             CornerRadius="20"
                              Source="ic_refresh"/>
       </Grid>
       <Grid>
@@ -55,15 +65,15 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0"
                        FontAttributes="Bold"
-                       Text="Fecha:"/>
+                       Text="Fecha"/>
         <Label Grid.Column="1"
                        FontAttributes="Bold"
                        MaxLines="1"
                        LineBreakMode="TailTruncation"
-                       Text="Calif"/>
+                       Text="Calif."/>
         <Label Grid.Column="2"
                        FontAttributes="Bold"
-                       Text="Origen:"/>
+                       Text="Origen"/>
       </Grid>
 
       <CollectionView ItemsSource="{Binding Trips}" 

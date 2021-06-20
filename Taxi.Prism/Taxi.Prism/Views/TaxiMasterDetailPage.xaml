@@ -9,7 +9,7 @@
 
   <MasterDetailPage.Master>
     <ContentPage Title="Menu"
-                 BackgroundColor="{StaticResource ColorBackground}">
+                 BackgroundColor="#fbd204">
       
       <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -24,8 +24,8 @@
 
           <Image x:Name="Logo" HorizontalOptions="Center"
                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=X,Factor=1,Constant=60}"
-                           HeightRequest="150"
-                           Source="taxi"/>
+                           HeightRequest="250"
+                           Source="TaxiApp"/>
           <ffimageloading:CachedImage x:Name="Picture" 
                                                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Logo,Property=Y,Factor=1,Constant=30}"
                                                 Aspect="AspectFill"
@@ -46,6 +46,7 @@
           </ffimageloading:CachedImage>
           <Label RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Picture,Property=Y,Factor=1,Constant=110}"
                            FontAttributes="Bold"
+                           Margin="0,50,0,30"
                            FontSize="Large"
                            Text="{Binding User.FullName}"
                            TextColor="Black"/>

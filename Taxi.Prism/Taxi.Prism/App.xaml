@@ -57,6 +57,12 @@
 
       <!-- Data Templates -->
       <DataTemplate x:Key="TripTemplate">
+        <Frame CornerRadius="10"
+             Padding="3"
+             Margin="3"
+             HasShadow="True"
+             
+             BackgroundColor="Moccasin">
         <Grid>
           <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding SelectTrip2Command}"/>
@@ -68,7 +74,7 @@
             <ColumnDefinition Width="Auto" />
           </Grid.ColumnDefinitions>
           <Label Grid.Column="0"
-                            Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                            Text="{Binding StartDateLocal, StringFormat='{0:dd/MM/yyyy HH:mm}'}"/>
           <Label Grid.Column="1"
                             Text="{Binding Qualification, StringFormat='{0:N2}'}"/>
           <Label Grid.Column="2"
@@ -78,6 +84,7 @@
           <Image Grid.Column="3" 
                             Source="ic_more_vert"/>
         </Grid>
+        </Frame>
       </DataTemplate>
 
 

@@ -5,7 +5,7 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"    
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Taxi.Prism.Views.HomePage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204 "
              Title="{Binding Title}">
   <StackLayout>
     <maps:Map x:Name="MyMap"
@@ -15,7 +15,10 @@
       <Button 
         Command="{Binding StartTripCommand}"
         Margin="10,0"
-        Text="Iniciar Viaje"/>
+        Text="Iniciar Viaje"
+        CornerRadius="20"
+        BackgroundColor="DarkTurquoise"
+        TextColor="Black"/>
     </StackLayout>
   </StackLayout>
 

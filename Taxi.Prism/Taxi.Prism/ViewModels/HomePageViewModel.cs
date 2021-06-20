@@ -13,7 +13,7 @@ namespace Taxi.Prism.ViewModels
         public HomePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
-            Title = "Taxi Qualifier";
+            Title = "Taxi App";
         }
 
         public DelegateCommand StartTripCommand => _startTripCommand ?? (_startTripCommand = new DelegateCommand(StartTripAsync));

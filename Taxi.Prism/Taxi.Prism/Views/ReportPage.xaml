@@ -6,8 +6,9 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
          	   xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="Taxi.Prism.Views.ReportPage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204"
              Title="{Binding Title}">
   <AbsoluteLayout>
     <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -22,55 +23,51 @@
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0"
-                       Grid.Column="0" 
-                       Text="Patente:"
-                       VerticalOptions="Center"/>
-        <StackLayout Grid.Row="0"
-                             Grid.Column="1" 
-                             Orientation="Horizontal">
-          <Entry HorizontalOptions="FillAndExpand" 
-                           MaxLength="3"
-                           Placeholder="ABC" 
-                           Text="{Binding PlaqueLetters}"
-                           VerticalOptions="Center"/>
-          <Label Text="-"
-                           VerticalOptions="Center"/>
-          <Entry HorizontalOptions="FillAndExpand" 
-                           Keyboard="Numeric"
-                           MaxLength="3"
-                           Placeholder="123" 
-                           Text="{Binding PlaqueNumbers}"
-                           VerticalOptions="Center"/>
-        </StackLayout>
+        <inputLayout:SfTextInputLayout 
+              Grid.Row="0"
+              Grid.Column="0"
+              Hint="Patente:"
+              ContainerType="Outlined">
+          <Entry 
+                Placeholder="ABC123"
+                Text="{Binding Plaque}" />
+        </inputLayout:SfTextInputLayout>
 
-        <Label Grid.Row="1"
-                       Grid.Column="0" 
-                       Text="Comentario:"
-                       VerticalOptions="Center"/>
-        <Editor Grid.Row="1"
-                        Grid.Column="1"
-                        HeightRequest="150"
-                        Text="{Binding Remark}"/>
+
+        <inputLayout:SfTextInputLayout 
+              Grid.Row="1"
+              Grid.Column="0"
+              Hint="Comentario:"
+              ContainerType="Outlined">
+           <Editor 
+                Placeholder="ABC123"
+                HeightRequest="150"
+                Text="{Binding Remark}" />
+         </inputLayout:SfTextInputLayout>
+      
       </Grid>
+      
       <Button Command="{Binding ReportCommand}"
                     IsEnabled="{Binding IsEnabled}"
                     Text="Enviar Incidente"
-                    VerticalOptions="EndAndExpand"/>
+                    VerticalOptions="EndAndExpand"
+                    BackgroundColor="DarkTurquoise"
+                    TextColor="Black"
+                    CornerRadius="20"/>
     </StackLayout>
     <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                                        AbsoluteLayout.LayoutFlags="All"
-                                       BackgroundColor="{StaticResource ColorDanger}"
+                                       BackgroundColor="Transparent"
                                        HorizontalOptions="Center"
-                                       TextColor="White"
+                                       TextColor="Blue"
                                        IsVisible="{Binding IsRunning}"
-                                       Title="Cargando..."
+                                       Title="Enviando..."
                                        VerticalOptions="Center"
                                        ViewBoxWidth="80"
                                        ViewBoxHeight="80" />

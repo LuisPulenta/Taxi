@@ -4,12 +4,13 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              ios:Page.UseSafeArea="true"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
          	   xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="Taxi.Prism.Views.UserTripsPage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204"
              Title="{Binding Title}">
 
   <AbsoluteLayout>
@@ -25,7 +26,7 @@
                                             Margin="5"
                                             RetryCount= "3"
                                             RetryDelay= "600"
-                                            WidthRequest="120">
+                                            WidthRequest="100">
           <ffimageloading:CachedImage.Transformations>
             <fftransformations:CircleTransformation />
           </ffimageloading:CachedImage.Transformations>
@@ -47,26 +48,33 @@
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="*" />
-          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="48" />
         </Grid.ColumnDefinitions>
-        <Label Grid.Column="0"
-                       Grid.Row="0"
-                       FontAttributes="Bold"
-                       Text="Fecha Inicio:"/>
-        <Label Grid.Column="1"
-                       Grid.Row="0"
-                       FontAttributes="Bold"
-                       Text="Fecha Fin:"/>
-        <DatePicker  Grid.Column="0"
-                             Grid.Row="1"
-                             Date="{Binding StartDate}"/>
-        <DatePicker  Grid.Column="1"
-                             Grid.Row="1"
-                             Date="{Binding EndDate}"/>
+        <inputLayout:SfTextInputLayout 
+              Hint="Desde:" 
+              Grid.Column="0"
+              Grid.Row="0"
+              ContainerType="Outlined"
+              >
+          <DatePicker Format="dd/MM/yyyy" Date="{Binding StartDate}"/>
+        </inputLayout:SfTextInputLayout>
+
+        <inputLayout:SfTextInputLayout 
+              Hint="Hasta:" 
+              Grid.Column="1"
+              Grid.Row="0"
+              ContainerType="Outlined"
+              >
+          <DatePicker Format="dd/MM/yyyy" Date="{Binding EndDate}"/>
+        </inputLayout:SfTextInputLayout>
+
         <ImageButton Grid.Column="2"
                              Grid.Row="0"
                              Grid.RowSpan="2"
+                             Margin="0,5,0,20"
                              Command="{Binding RefreshCommand}" 
+                             BackgroundColor="DarkTurquoise"
+                             CornerRadius="20"
                              Source="ic_refresh"/>
       </Grid>
       <Grid>
@@ -81,30 +89,30 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0"
                        FontAttributes="Bold"
-                       Text="Fecha Inicio:"/>
+                       Text="Fecha Inicio"/>
         <Label Grid.Column="1"
                        FontAttributes="Bold"
                        MaxLines="1"
                        LineBreakMode="TailTruncation"
-                       Text="*"/>
+                       Text="Clasif."/>
         <Label Grid.Column="2"
                        FontAttributes="Bold"
-                       Text="Origen:"/>
+                       Text="  Origen"/>
       </Grid>
 
       <CollectionView ItemsSource="{Binding Trips}" 
                             ItemTemplate="{StaticResource TripTemplate}">
         <CollectionView.ItemsLayout>
-          <GridItemsLayout Orientation="Vertical"/>
+          <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5"/>
         </CollectionView.ItemsLayout>
       </CollectionView>
     </StackLayout>
     <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                   AbsoluteLayout.LayoutFlags="All"
-                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   BackgroundColor="Transparent"
                 	                   HorizontalOptions="Center"
-                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   TextColor="Blue"
                 	                   IsVisible="{Binding IsRunning}"
                 	                   Title="Cargando..."
                 	                   VerticalOptions="Center"

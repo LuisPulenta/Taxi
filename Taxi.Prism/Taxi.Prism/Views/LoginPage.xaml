@@ -3,78 +3,100 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
           	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients" 
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Taxi.Prism.Views.LoginPage"
              BackgroundColor="{StaticResource ColorBackground}"
              Title="{Binding Title}">
+  <ScrollView>
+    <Grid>
+      <magic:GradientView VerticalOptions="FillAndExpand">
+        <magic:GradientView.GradientSource>
+          <magic:LinearGradient Angle="353">
+            <magic:GradientStop Color="#d3a404" Offset="0"/>
+            <magic:GradientStop Color="#e2c758" Offset=".25"/>
+            <magic:GradientStop Color="#fbd204" Offset=".5"/>
+            <magic:GradientStop Color="#e2c758" Offset=".25"/>
+            <magic:GradientStop Color="#d3a404" Offset="1"/>
 
-  <AbsoluteLayout>
-    <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+          </magic:LinearGradient>
+        </magic:GradientView.GradientSource>
+      </magic:GradientView>
+      <AbsoluteLayout>
+
+
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
                      Padding="5">
-      <Image HeightRequest="150"
-                   Margin="0,20,0,0"
-                   Source="taxi"/>
-      <StackLayout VerticalOptions="CenterAndExpand">
-        <Grid Margin="20" 
-                  VerticalOptions="CenterAndExpand">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Label Grid.Column="0" 
-                       Grid.Row="0"
-                       HorizontalTextAlignment="End"
-                       Text="Email:"
-                       VerticalOptions="Center"/>
-        <Entry Grid.Column="1"
-                       Grid.Row="0"
-                       BackgroundColor="{StaticResource ColorFontInverse}"
-                       Keyboard="Email"
-                       Placeholder="Ingrese Email..."
-                       Text="{Binding Email}"/>
-        <Label Grid.Column="0" 
-                       Grid.Row="1"
-                       HorizontalTextAlignment="End"
-                       Text="Password:"
-                       VerticalOptions="Center"/>
-        <Entry Grid.Column="1"
-                       Grid.Row="1"
-                       BackgroundColor="{StaticResource ColorFontInverse}"
-                       IsPassword="True"
-                       Placeholder="Ingrese Password..."
-                       Text="{Binding Password}"/>
-      </Grid>
-        <Label FontAttributes="Bold"
+
+          <Image HeightRequest="300"
+                   Margin="0,5,0,0"
+                   Source="TaxiApp"/>
+
+          <StackLayout VerticalOptions="StartAndExpand">
+
+            <inputLayout:SfTextInputLayout Hint="Email:" 
+                                                       ContainerType="Outlined">
+              <Entry 
+              Placeholder="Ingrese EMail..."
+                                   Keyboard="Email"
+                                   Text="{Binding Email}" />
+            </inputLayout:SfTextInputLayout>
+
+            <inputLayout:SfTextInputLayout Hint="Password:" 
+                                                       EnablePasswordVisibilityToggle="true"
+                                                       ContainerType="Outlined">
+              <Entry 
+              Placeholder="Ingrese Password..." 
+                                   IsPassword="True"
+                                   Text="{Binding Password}" />
+            </inputLayout:SfTextInputLayout>
+
+            <Label FontAttributes="Bold"
             HorizontalOptions="Center" 
             Text="¿Olvidó su Password?"
             TextColor="{StaticResource ColorAccent}">
-          <Label.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
-          </Label.GestureRecognizers>
-        </Label>
-      </StackLayout>
+              <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+              </Label.GestureRecognizers>
+            </Label>
+          </StackLayout>
 
-      <StackLayout>
-        <Button Command="{Binding LoginCommand}" 
+          <StackLayout>
+            <Button Command="{Binding LoginCommand}" 
                         IsEnabled="{Binding IsEnabled}"
-                        Text="LogIn"/>
-        <Button Command="{Binding RegisterCommand}" 
+                        Text="Iniciar Sesion"
+                        BackgroundColor="DarkTurquoise"
+                        TextColor="Black"
+                        CornerRadius="20"/>
+            <Button Command="{Binding RegisterCommand}" 
                         IsEnabled="{Binding IsEnabled}"
                         Text="Registrarse"
-                        Style="{StaticResource DangerButton}"/>
-      </StackLayout>
-    </StackLayout>
-    <busyindicator:SfBusyIndicator AnimationType="Gear" 
+                        Style="{StaticResource DangerButton}"
+                        BackgroundColor="Crimson"
+                        CornerRadius="20"/>
+          </StackLayout>
+        </StackLayout>
+
+
+
+        <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                   AbsoluteLayout.LayoutFlags="All"
-                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   BackgroundColor="Transparent"
                 	                   HorizontalOptions="Center"
-                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   TextColor="{StaticResource ColorAccent}"
                 	                   IsVisible="{Binding IsRunning}"
                 	                   Title="Cargando..."
                 	                   VerticalOptions="Center"
                 	                   ViewBoxWidth="80"
                 	                   ViewBoxHeight="80" />
-  </AbsoluteLayout>
+      </AbsoluteLayout>
+    </Grid>
+
+  </ScrollView>
+  
+
+
 </ContentPage>

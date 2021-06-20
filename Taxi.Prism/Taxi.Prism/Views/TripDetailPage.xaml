@@ -5,7 +5,7 @@
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Taxi.Prism.Views.TripDetailPage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204 "
              Title="{Binding Title}">
 
   <StackLayout Padding="5">
@@ -42,7 +42,7 @@
                    Text="Fecha Inicio:"/>
       <Label Grid.Column="1" 
                    Grid.Row="0"
-                   Text="{Binding Trip.StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"/>
+                   Text="{Binding Trip.StartDateLocal, StringFormat='{0:dd/MM/yyyy}'}"/>
       <Label Grid.Column="0" 
                    Grid.Row="1"
                    LineBreakMode="CharacterWrap"

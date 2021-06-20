@@ -3,36 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Taxi.Prism.Views.TaxiHistoryPage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204 "
              Title="{Binding Title}">
   <AbsoluteLayout>
     <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                  AbsoluteLayout.LayoutFlags="All" 
                  Padding="5">
-      <StackLayout Orientation="Horizontal">
-        <Label Text="Patente:"
-                   VerticalOptions="Center"/>
-        <Entry HorizontalOptions="FillAndExpand" 
-                   Placeholder="Ingrese Patente..." 
-                   Text="{Binding Plaque}"
-                   VerticalOptions="Center"/>
+
+      <Grid VerticalOptions="Center">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="2*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <inputLayout:SfTextInputLayout 
+             
+              Hint="Patente:"
+              ContainerType="Outlined">
+          <Entry 
+             Grid.Row="0"
+              Grid.Column="0"
+                Placeholder="Ingrese Patente..."
+                Text="{Binding Plaque}" />
+        </inputLayout:SfTextInputLayout>
+
         <Button    Command="{Binding CheckPlaqueCommand}"
-                   HeightRequest="40"
-                   Margin="10,0"
-                   Text="Chequear"/>
-      </StackLayout>
-      <rating:SfRating HorizontalOptions="Center" 
-                       IsEnabled="false"
-                             Margin="0,5"
-                             Precision="Exact"
-                             Value="{Binding Taxi.Qualification}" />
+                   Margin="0,10,0,-10"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   VerticalOptions="EndAndExpand"
+                   CornerRadius="20"
+                   BackgroundColor="DarkTurquoise"
+                   TextColor="Black"
+                   Text="CHEQUEAR"/>
+
+        <rating:SfRating HorizontalOptions="Center" 
+                         IsEnabled="false"
+                         Grid.Row="2"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="2"
+                         HeightRequest="50"
+                         Margin="0,-28,0,0"
+                         Precision="Exact"
+                         Value="{Binding Taxi.Qualification}" />
+        
+      </Grid>
+      
+      
       <Label FontAttributes="Bold" 
                    FontSize="Large"
                    HorizontalOptions="Center"
-                   Text="{Binding Taxi.Qualification, StringFormat='Qualification: {0:N2}'}"/>
+                   Margin="0,-24,0,0"
+                   Text="{Binding Taxi.Qualification, StringFormat='Calificación: {0:N2}'}"/>
 
       <StackLayout Orientation="Horizontal">
         <Label Text="N° de viajes:"/>
@@ -47,40 +73,51 @@
           <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width=".8*" />
-          <ColumnDefinition Width=".8*" />
+          <ColumnDefinition Width=".35*" />
+          <ColumnDefinition Width=".2*" />
           <ColumnDefinition Width="*" />
-          <ColumnDefinition Width="48" />
+          <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0"
                    FontAttributes="Bold"
-                   Text="Fecha Inicio"/>
+                   Text="Fecha"/>
         <Label Grid.Column="1"
                    FontAttributes="Bold"
-                   Text="Calificación"/>
+                   Text="Calif."/>
         <Label Grid.Column="2"
                    FontAttributes="Bold"
                    Text="Comentarios"/>
       </Grid>
 
-      <CollectionView ItemsSource="{Binding Trips}">
+      <CollectionView ItemsSource="{Binding Trips}" >
         <CollectionView.ItemsLayout>
-          <GridItemsLayout Orientation="Vertical"/>
+          <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5"/>
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
           <DataTemplate>
+            <Frame CornerRadius="10"
+             Padding="3"
+             Margin="3"
+             HasShadow="True"
+             
+             BackgroundColor="Moccasin">
             <Grid>
               <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding SelectTripCommand}"/>
               </Grid.GestureRecognizers>
 
               <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".8*" />
-                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width=".4*" />
+                <ColumnDefinition Width=".2*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
-              <Label Grid.Column="0"
+              
+              <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              
+                  <Label Grid.Column="0"
                                Text="{Binding StartDateLocal, StringFormat='{0:dd/MM/yyyy}'}"
                                VerticalOptions="Center"/>
               <Label Grid.Column="1"
@@ -94,6 +131,8 @@
               <Image Grid.Column="3" 
                                Source="ic_more_vert"/>
             </Grid>
+            </Frame>
+            
           </DataTemplate>
         </CollectionView.ItemTemplate>
       </CollectionView>
@@ -101,11 +140,11 @@
     <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                      AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                   AbsoluteLayout.LayoutFlags="All"
-                	                   BackgroundColor="{StaticResource ColorDanger}"
+                	                   BackgroundColor="Transparent"
                 	                   HorizontalOptions="Center"
-                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   TextColor="Blue"
                 	                   IsVisible="{Binding IsRunning}"
-                	                   Title="Loading..."
+                	                   Title="Chequeando..."
                 	                   VerticalOptions="Center"
                 	                   ViewBoxWidth="80"
                 	                   ViewBoxHeight="80" />

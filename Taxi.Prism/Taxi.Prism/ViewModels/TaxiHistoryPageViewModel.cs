@@ -39,7 +39,13 @@ namespace Taxi.Prism.ViewModels
             set => SetProperty(ref _taxi, value);
         }
 
-        public string Plaque { get; set; }
+        private string _plaque;
+
+        public string Plaque
+        {
+            get => _plaque;
+            set => SetProperty(ref _plaque, value);
+        }
 
         public bool IsRunning
         {
@@ -52,6 +58,7 @@ namespace Taxi.Prism.ViewModels
 
         private async void CheckPlaqueAsync()
         {
+            Plaque = Plaque.ToUpper();
             if (string.IsNullOrEmpty(Plaque))
             {
                 await App.Current.MainPage.DisplayAlert(

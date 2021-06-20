@@ -53,14 +53,14 @@ namespace Taxi.Prism.ViewModels
             {
                 new Menu
                 {
-                    Icon = "ic_action_airport_shuttle",
+                    Icon = "ic_airport_shuttle",
                     PageName = "HomePage",
                     Title = "Nuevo viaje",
                     IsLoginRequired=false
                 },
                 new Menu
                 {
-                    Icon = "ic_action_local_taxi",
+                    Icon = "ic_local_taxi",
                     PageName = "TaxiHistoryPage",
                     Title = "Ver historial del Taxi",
                     IsLoginRequired=false
@@ -74,28 +74,28 @@ namespace Taxi.Prism.ViewModels
                 },
                 new Menu
                 {
-                    Icon = "ic_action_people",
+                    Icon = "ic_supervised_user_circle",
                     PageName = "GroupPage",
                     Title = "Administrar mi grupo de usuarios",
                     IsLoginRequired=true
                 },
                 new Menu
                 {
-                    Icon = "ic_action_account_circle",
+                    Icon = "ic_account_circle",
                     PageName = "ModifyUserPage",
                     Title = "Modificar Usuario",
                     IsLoginRequired=true
                 },
                 new Menu
                 {
-                    Icon = "ic_action_report",
+                    Icon = "ic_report",
                     PageName = "ReportPage",
                     Title = "Informar un incidente",
                     IsLoginRequired=false
                 },
                 new Menu
                 {
-                    Icon = "ic_action_exit_to_app",
+                    Icon = "ic_exit_to_app",
                     PageName = "LoginPage",
                     Title = Settings.IsLogin ? "Cerrar sesión" : "Iniciar sesión",
                     IsLoginRequired=false

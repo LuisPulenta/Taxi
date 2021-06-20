@@ -49,9 +49,9 @@ namespace Taxi.Prism.ViewModels
             set => SetProperty(ref _isEnabled, value);
         }
 
-        public string PlaqueLetters { get; set; }
+        public string Plaque { get; set; }
 
-        public int? PlaqueNumbers { get; set; }
+        
 
         public string Remark { get; set; }
 
@@ -100,7 +100,7 @@ namespace Taxi.Prism.ViewModels
                 Address = address,
                 Latitude = _geolocatorService.Latitude,
                 Longitude = _geolocatorService.Longitude,
-                Plaque = $"{PlaqueLetters}{PlaqueNumbers}",
+                Plaque = Plaque,
                 UserId = new Guid(user.Id),
                 Remarks = Remark
             };
@@ -113,7 +113,7 @@ namespace Taxi.Prism.ViewModels
 
         private async Task<bool> ValidateDataAsync()
         {
-            if (string.IsNullOrEmpty(PlaqueLetters) || PlaqueNumbers == 0)
+            if (string.IsNullOrEmpty(Plaque))
             {
                 await App.Current.MainPage.DisplayAlert("Error", "Esta Patente no existe", "Aceptar");
                 return false;

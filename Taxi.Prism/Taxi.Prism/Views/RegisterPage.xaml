@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
-         	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-           	 xmlns:i18n="clr-namespace:Taxi.Prism.Helpers"
+         	   xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+           	 xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Taxi.Prism.Views.RegisterPage"
-             BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="#fbd204 "
              Title="{Binding Title}">
 
   <AbsoluteLayout>
@@ -34,117 +34,97 @@
 
           </ffimageloading:CachedImage>
 
-          <Grid>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*"/>
-              <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
+          <StackLayout Spacing="-5">
+            
 
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+            <inputLayout:SfTextInputLayout 
+              Hint="Documento:"
+              ContainerType="Outlined">
+              <Entry 
+                Placeholder="Ingrese Documento..."
+                Keyboard="Numeric"
+                Text="{Binding User.Document}" />
+            </inputLayout:SfTextInputLayout>
 
-            <Label Grid.Row="0"
-                               Grid.Column="0"
-                               Text="Documento:"
-                               VerticalOptions="Center"/>
-            <Entry Grid.Row="0"
-                               Grid.Column="1"
-                               Keyboard="Numeric"
-                               Placeholder="Escriba Documento..."
-                               Text="{Binding User.Document}"/>
+            <inputLayout:SfTextInputLayout 
+              Hint="Nombre:"
+              ContainerType="Outlined">
+              <Entry 
+                Placeholder="Ingrese Nombre..."
+                Text="{Binding User.FirstName}" />
+            </inputLayout:SfTextInputLayout>
 
-            <Label Grid.Row="1"
-                               Grid.Column="0"
-                               Text="Nombre:"
-                               VerticalOptions="Center"/>
-            <Entry Grid.Row="1"
-                               Grid.Column="1"
-                               Placeholder="Escriba Nombre..."
-                               Text="{Binding User.FirstName}"/>
+            <inputLayout:SfTextInputLayout 
+              Hint="Apellido:"
+              ContainerType="Outlined">
+              <Entry 
+                Placeholder="Ingrese Apellido..."
+                Text="{Binding User.LastName}" />
+            </inputLayout:SfTextInputLayout>
 
-            <Label Grid.Row="2"
-                               Grid.Column="0"
-                               Text="Apellido:"
-                               VerticalOptions="Center"/>
-            <Entry Grid.Row="2"
-                               Grid.Column="1"
-                               Placeholder="Escriba Apellido..."
-                               Text="{Binding User.LastName}"/>
+            <inputLayout:SfTextInputLayout 
+              Hint="Domicilio:"
+              ContainerType="Outlined">
+              <Entry 
+                Placeholder="Ingrese Domicilio..."
+                Text="{Binding User.Address}" />
+            </inputLayout:SfTextInputLayout>
 
-            <Label Grid.Row="3"
-                               Grid.Column="0"
-                               Text="Domicilio:"
-                               VerticalOptions="Center"/>
-            <Entry Grid.Row="3"
-                               Grid.Column="1"
-                               Placeholder="Escriba Domicilio..."
-                               Text="{Binding User.Address}"/>
-            <Label Grid.Row="4"
-                               Grid.Column="0"
-                               Text="Email:"
-                               VerticalOptions="Center"/>
-            <Entry Grid.Row="4"
-                               Grid.Column="1"
-                               Keyboard="Email"
-                               Placeholder="Escriba Email..."
-                               Text="{Binding User.Email}"/>
+            <inputLayout:SfTextInputLayout 
+              Hint="Email:"
+              ContainerType="Outlined">
+              <Entry 
+                Placeholder="Ingrese Email..."
+                Keyboard="Email"
+                Text="{Binding User.Email}" />
+            </inputLayout:SfTextInputLayout>
 
-            <Label Grid.Row="5"
-                               Grid.Column="0"
-                               Text="Teléfono:"
-                               VerticalOptions="Center"/>
-            <Entry Grid.Row="5" 
-                               Grid.Column="1"
-                               Keyboard="Telephone"
-                               Placeholder="Escriba Teléfono..."
-                               Text="{Binding User.Phone}"/>
+            <inputLayout:SfTextInputLayout 
+              Hint="Teléfono:"
+              ContainerType="Outlined">
+              <Entry 
+                Placeholder="Ingrese Teléfono..."
+                Keyboard="Telephone"
+                Text="{Binding User.Phone}" />
+            </inputLayout:SfTextInputLayout>
 
-            <Label Grid.Row="6"
-                               Grid.Column="0"
-                               Text="Password:"
-                               VerticalOptions="Center"/>
-            <Entry Grid.Row="6"
-                               Grid.Column="1"
-                               IsPassword="True"
-                               Placeholder="Escriba Password..."
-                               Text="{Binding User.Password}"/>
+            <inputLayout:SfTextInputLayout 
+              Hint="Password:"
+              ContainerType="Outlined">
+              <Entry 
+                Placeholder="Ingrese Password..."
+                IsPassword="True"
+                Text="{Binding User.Password}" />
+            </inputLayout:SfTextInputLayout>
 
-            <Label Grid.Row="7"
-                               Grid.Column="0"
-                               Text="Confirm. Password:"
-                               VerticalOptions="Center"/>
-            <Entry Grid.Row="7"
-                               Grid.Column="1"
-                               IsPassword="True"
-                               Placeholder="Escriba Confirm. Password..."
-                               Text="{Binding User.PasswordConfirm}"/>
+            <inputLayout:SfTextInputLayout 
+              Hint="Confirm. Password:"
+              ContainerType="Outlined">
+              <Entry 
+                Placeholder="Ingrese Confirm. Password..."
+                IsPassword="True"
+                Text="{Binding User.PasswordConfirm}" />
+            </inputLayout:SfTextInputLayout>
 
-            <Label Grid.Row="8"
-                               Grid.Column="0"
-                               Text="Registrar como:"
-                               VerticalOptions="Center"/>
-            <Picker Grid.Row="8"
-                                Grid.Column="1"
-                                ItemDisplayBinding="{Binding Name}"
+
+            <inputLayout:SfTextInputLayout 
+              Hint="Registrar como:" 
+              ContainerType="Outlined">
+              <Picker ItemDisplayBinding="{Binding Name}"
                                 ItemsSource="{Binding Roles}"
                                 SelectedItem="{Binding Role}"
-                                Title="Seleccione una opción...">
-            </Picker>
-          </Grid>
+                                Title="Seleccione una opción..."/>
+            </inputLayout:SfTextInputLayout>
+
+
+          </StackLayout>
         </StackLayout>
       </ScrollView>
       <Button Command="{Binding RegisterCommand}"
                     IsEnabled="{Binding IsEnabled}"
-                    Text="Registrar"/>
+                    Text="Registrar"
+                    BackgroundColor="DarkTurquoise"
+                    CornerRadius="20"/>
     </StackLayout>
     <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
